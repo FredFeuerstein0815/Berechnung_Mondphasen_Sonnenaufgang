@@ -1,0 +1,1516 @@
+<html>
+<head>
+<title>Sonnenaufgang, Sonnenuntergang, Mondaufgang, Monduntergang, Mondphase, Vollmond, Neumond, Sonnenfinsternis</title>
+<meta name="description" content="Mondphase Vollmond Mondaufgang Monduntergang Sonnenaufgang Sonnenuntergang Sonnenfinsternis Sonne Azimut Morgendämmerung Abenddämmerung Horizont">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="refresh" content="86400; URL=mond.html" />
+<link rel="stylesheet" href="menu_style.css" type="text/css" />
+<body bgcolor="#000000">
+<ul class="menu red">
+<li class="current"><a href="mondphase_sonnenaufgang_axel_freiburg.html" target="_self">Sonnenaufgang Mondphase</a>
+</ul>
+<script type="text/javascript">
+<!--
+  function Neumond(k){
+    var JDE, e, m, m1, f, o;
+    k = Math.floor(k);
+    t = k / 1236.85;
+    e = Var_e(t);
+    m = Var_m(k, t);
+    m1 = Var_m1(k, t);
+    f = Var_f(k, t);
+    o = Var_o(k, t);
+    //Neumondkorrekturen
+    JDE = Var_JDE(k, t)
+    JDE += -.4072 * SN(m1) + .17241 * e * SN(m) + .01608 * SN(2 * m1) + .01039 * SN(2 * f) + .00739 * e * SN(m1 - m) - .00514 * e * SN(m1 + m) + .00208 * e * e * SN(2 * m) - .00111 * SN(m1 - 2 * f) - .00057 * SN(m1 + 2 * f);
+    JDE += .00056 * e * SN(2 * m1 + m) - .00042 * SN(3 * m1) + .00042 * e * SN(m + 2 * f) + .00038 * e * SN(m - 2 * f) - .00024 * e * SN(2 * m1 - m) - .00017 * SN(o) - .00007 * SN(m1 + 2 * m) + .00004 * SN(2 * m1 - 2 * f);
+    JDE += .00004 * SN(3 * m) + .00003 * SN(m1 + m - 2 * f) + .00003 * SN(2 * m1 + 2 * f) - .00003 * SN(m1 + m + 2 * f) + .00003 * SN(m1 - m + 2 * f) - .00002 * SN(m1 - m - 2 * f) - .00002 * SN(3 * m1 + m);
+    JDE += .00002 * SN(4 * m1);
+    return Korrektur(JDE, t, k);
+  }
+  function Viertel(k, modus){
+    // modus = .25 = Erstes Viertel, modus = .75 = Letztes Viertel
+    var JDE, w, e, m, m1, f, o;
+    k = Math.floor(k) + modus;
+    t = k / 1236.85;
+    e = Var_e(t);
+    m = Var_m(k, t);
+    m1 = Var_m1(k, t);
+    f = Var_f(k, t);
+    o = Var_o(k, t);
+    // Viertelmondkorrekturen
+    JDE = Var_JDE(k, t)
+    JDE += -.62801 * SN(m1) + .17172 * e * SN(m) - .01183 * e * SN(m1 + m) + .00862 * SN(2 * m1) + .00804 * SN(2 * f) + .00454 * e * SN(m1 - m) + .00204 * e * e * SN(2 * m) - .0018 * SN(m1 - 2 * f) - .0007 * SN(m1 + 2 * f);
+    JDE += -.0004 * SN(3 * m1) - .00034 * e * SN(2 * m1 - m) + .00032 * e * SN(m + 2 * f) + .00032 * e * SN(m - 2 * f) - .00028 * e * e * SN(m1 + 2 * m) + .00027 * e * SN(2 * m1 + m) - .00017 * SN(o);
+    JDE += -.00005 * SN(m1 - m - 2 * f) + .00004 * SN(2 * m1 + 2 * f) - .00004 * SN(m1 + m + 2 * f) + .00004 * SN(m1 - 2 * m) + .00003 * SN(m1 + m - 2 * f) + .00003 * SN(3 * m) + .00002 * SN(2 * m1 - 2 * f);
+    JDE += .00002 * SN(m1 - m + 2 * f) - .00002 * SN(3 * m1 + m);
+    w = .00306 - .00038 * e * CS(m) + .00026 * CS(m1) - .00002 * CS(m1 - m) + .00002 * CS(m1 + m) + .00002 * CS(2 * f);
+    (modus == .25) ? JDE += w : JDE += -w;
+    return Korrektur(JDE, t, k);
+  }
+  function Vollmond(k){
+    var JDE, e, m, m1, f, o;
+    k = Math.floor(k) + .5;
+    t = k / 1236.85;
+    e = Var_e(t);
+    m = Var_m(k, t);
+    m1 = Var_m1(k, t);
+    f = Var_f(k, t);
+    o = Var_o(k, t);
+    //Vollmondkorrekturen
+    JDE = Var_JDE(k, t);
+    JDE += -.40614 * SN(m1) + .17302 * e * SN(m) + .01614 * SN(2 * m1) + .01043 * SN(2 * f) + .00734 * e * SN(m1 - m) - .00515 * e * SN(m1 + m) + .00209 * e * e * SN(2 * m) - .00111 * SN(m1 - 2 * f) - .00057 * SN(m1 + 2 * f);
+    JDE += .00056 * e * SN(2 * m1 + m) - .00042 * SN(3 * m1) + .00042 * e * SN(m + 2 * f) + .00038 * e * SN(m - 2 * f) - .00024 * e * SN(2 * m1 - m) - .00017 * SN(o) - .00007 * SN(m1 + 2 * m) + .00004 * SN(2 * m1 - 2 * f);
+    JDE += .00004 * SN(3 * m) + .00003 * SN(m1 + m - 2 * f) + .00003 * SN(2 * m1 + 2 * f) - .00003 * SN(m1 + m + 2 * f) + .00003 * SN(m1 - m + 2 * f) - .00002 * SN(m1 - m - 2 * f) - .00002 * SN(3 * m1 + m);
+    JDE += .00002 * SN(4 * m1);
+    return Korrektur(JDE, t, k);
+  }
+  function Korrektur(JDE, t, k){
+    //Zusätzliche Korrekturen
+    JDE += .000325 * SN(299.77 + .107408 * k - .009173 * t * t) + .000165 * SN(251.88 + .016321 * k) + .000164 * SN(251.83 + 26.651886 * k) + .000126 * SN(349.42 + 36.412478 * k) + .00011 * SN(84.66 + 18.206239 * k);
+    JDE += .000062 * SN(141.74 + 53.303771 * k) + .00006 * SN(207.14 + 2.453732 * k) + .000056 * SN(154.84 + 7.30686 * k) + .000047 * SN(34.52 + 27.261239 * k) + .000042 * SN(207.19 + .121824 * k) + .00004 * SN(291.34 + 1.844379 * k);
+    JDE += .000037 * SN(161.72 + 24.198154 * k) + .000035 * SN(239.56 + 25.513099 * k) + .000023 * SN(331.55 + 3.592518 * k);
+    return JDE;
+  }
+  function Finsternis(k, Typ, Modus){
+    // Typ = .5 = Mondfinsternis; Typ = 0 = Sonnenfinsternis
+    // Modus = 0 = Finsternis partiell, Modus = 1 = Finsternis total, Modus = 2 = Sonnenfinsternis ringförmig
+    var t, f, JDE, Ringtest;
+    k = Math.floor(k) + Typ;
+    t = k / 1236.85;
+    f = Var_f(k, t);
+    JDE = 0;
+    Ringtest = 0;
+    if(SN(Math.abs(f)) <= .36){
+      var var1, var2, o, f1, a1, e, m, m1, p, q, g, u;
+      o = Var_o(k, t);
+      f1 = f - .02665 * SN(o);
+      a1 = 299.77 + .107408 * k - .009173 * t * t;
+      e = Var_e(t);
+      m = Var_m(k, t);
+      m1 = Var_m1(k, t);
+      p = .207 * e * SN(m) + .0024 * e * SN(2 * m) - .0392 * SN(m1) + .0116 * SN(2 * m1) - .0073 * e * SN(m1 + m) + .0067 * e * SN(m1 - m) + .0118 * SN(2 * f1);
+      q = 5.2207 - .0048 * e * CS(m) + .002 * e * CS(2 * m) - .3299 * CS(m1) - .006 * e * CS(m1 + m) + .0041 * e * CS(m1 - m);
+      g = (p * CS(f1) + q * SN(f1)) * (1 - .0048 * CS(Math.abs(f1)));
+      u = .0059 + .0046 * e * CS(m) - .0182 * CS(m1) + .0004 * CS(2 * m1) - .0005 * CS(m + m1);
+      JDE = Var_JDE(k, t);
+      (Typ) ? JDE += - .4065 * SN(m1) + .1727 * e * SN(m) : JDE += - .4075 * SN(m1) + .1721 * e * SN(m);
+      JDE += .0161 * SN(2 * m1) - .0097 * SN(2 * f1) + .0073 * e * SN(m1 - m) - .005 * e * SN(m1 + m) - .0023 * SN(m1 - 2 * f1) + .0021 * e * SN(2 * m);
+      JDE += .0012 * SN(m1 + 2 * f1) + .0006 * e * SN(2 * m1 + m) - .0004 * SN(3 * m1) - .0003 * e * SN(m + 2 * f1) + .0003 * SN(a1) - .0002 * e * SN(m - 2 * f1) - .0002 * e * SN(2 * m1 - m) - .0002 * SN(o);
+      if(Typ){
+        if((1.0248 - u - Math.abs(g)) / .545 <= 0) JDE = 0 // keine Mf
+        if(Modus == 0 && (1.0128 - u - Math.abs(g)) / .545 > 0 && (.4678 - u) * (.4678 - u) - g * g > 0) JDE = 0; // keine partielle Mf
+        if(Modus == 1 && ((1.0128 - u - Math.abs(g)) / .545 <= 0 != (.4678 - u) * (.4678 - u) - g * g <= 0)) JDE = 0; // keine totale Mf
+      }
+      else{
+        if(Math.abs(g) > 1.5433 + u) JDE = 0; // keine SF
+        if(Modus == 0 && ((g >= -.9972 && g <= .9972) || (Math.abs(g) >= .9972 && Math.abs(g) < .9972 + Math.abs(u)))) JDE = 0; // keine partielle Sf
+        if(Modus > 0){
+           if((g < -.9972 || g > .9972) || (Math.abs(g) < .9972 && Math.abs(g) > .9972 + Math.abs(u))) JDE = 0; // keine ringf�rmige oder totale SF
+           if(u > .0047 || u >= .00464 * Math.sqrt(1 - g * g)) Ringtest = 1; // keine totale Sf
+           if (Ringtest == 1 && Modus == 1) JDE = 0;
+           if (Ringtest == 0 && Modus == 2) JDE = 0;
+        }
+      }
+    }
+    return JDE;
+  }
+  function Beleuchtung(JDE){
+    var t, d, m, m1, i;
+    t = (JDE - 2451545) / 36525;
+    d = 297.8502042 + 445267.11151686 * t - .00163 * t * t + t * t * t / 545868 - t * t * t * t / 113065000;
+    m = 357.5291092 + 35999.0502909 * t - .0001536 * t * t + t * t * t / 24490000;
+    m1 = 134.9634114 + 477198.8676313 * t + .008997 * t * t + t * t * t / 69699 - t * t * t * t / 14712000;
+    i = 180 - d - 6.289 * SN(m1) + 2.1 * SN(m) - 1.274 * SN(2 * d - m1) - .658 * SN(2 * d) - .241 * SN(2 * m1) - .110 * SN(d);
+    return (1 + CS(i)) / 2 * 100;
+  }
+  function Deklination_Nord(Modus){
+    var Heute = new Date();
+    var JDA = Java_JD(Heute.getTime());
+    var k = Math.floor((Dezimaljahr() - 2000.03) * 13.3686);
+    do{
+      var t = k / 1336.86;
+      var d = 152.2029 + 333.0705546 * k - .0004025 * t * t + .00000011 * t * t * t;
+      var m = 14.8591 + 26.9281592 * k - .0000544 * t * t - .0000001 * t * t * t;
+      var m1 = 4.6881 + 356.9562795 * k + .0103126 * t * t + .00001251 * t * t * t;
+      var f = 325.8867 + 1.4467806 * k - .0020708 * t * t - .00000215 * t * t * t;
+      var e = 1 - .002516 * t - .0000074 * t * t;
+      var JDE = 2451562.5897 + 27.321582241 * k + .000100695 * t * t - .000000141 * t * t * t;
+      JDE += .8975 * CS(f) - .4726 * SN(m1) - .103 * SN(2 * f) - .0976 * SN(2 * d - m1) - .0462 * CS(m1 - f) - .0461 * CS(m1 + f) - .0438 * SN(2 * d) + .0162 * SN(m) * e - .0157 * CS(3 * f) + .0145 * SN(m1 + 2 * f) + .0136 * CS(2 * d - f);
+      JDE += - .0095 * CS(2 * d - m1 - f) - .0091 * CS(2 * d - m1 + f) - .0089 * CS(2 * d + f) + .0075 * SN(2 * m1) - .0068 * SN(m1 - 2 * f) + .0061 * CS(2 * m1 - f) - .0047 * SN(m1 + 3 * f) - .0043 * SN(2 * d - m - m1) * e;
+      JDE += - .004 * CS(m1 - 2 * f)  - .0037 * SN(2 * d - 2 * m1) + .0031 * SN(f) + .003 * SN(2 * d + m1) - .0029 * CS(m1 + 2 * f) - .0029 * SN(2 * d - m) * e - .0027 * SN(m1 + f) + .0024 * SN(m - m1) * e - .0021 * SN(m1 - 3 * f);
+      JDE += .0019 * SN(2 * m1 + f) + .0018 * CS(2 * d - 2 * m1 - f) + .0018 * SN(3 * f) + .0017 * CS(m1 + 3 * f) + .0017 * CS(2 * m1) - .0014 * CS(2 * d - m1) + .0013 * CS(2 * d + m1 + f) + .0013 * CS(m1) + .0012 * SN(3 * m1 + f);
+      JDE += .0011 * SN(2 * d - m1 + f) - .0011 * CS(2 * d - 2 * m1) + .001 * CS(d + f) + .001 * SN(m + m1) * e - .0009 * SN(2 * d - 2 * f) + .0007 * CS(2 * m1 + f) - .0007 * CS(3 * m1 + f);
+      var Grad = 23.6961 - .013004 * t + 5.1093 * SN(f) + .2658 * CS(2 * f) + .1448 * SN(2 * d - f) - .0322 * SN(3 * f) + .0133 * CS(2 * d - 2 * f) + .0125 * CS(2 * d) - .0124 * SN(m1 - f) - .0101 * SN(m1 + 2 * f) + .0097 * CS(f);
+      Grad += - .0087 * SN(2 * d + m - f) * e + .0074 * SN(m1 + 3 * f) + .0067 * SN(d + f) + .0063 * SN(m1 - 2 * f) + .006 * SN(2 * d - m - f) * e - .0057 * SN(2 * d - m1 - f) - .0056 * CS(m1 + f) + .0052 * CS(m1 + 2 * f) + .0041 * CS(2 * m1 + f);
+      Grad += - .004 * CS(m1 - 3 * f) + .0038 * CS(2 * m1 - f) - .0034 * CS(m1 - 2 * f) - .0029 * SN(2 * m1) + .0029 * SN(3 * m1 + f) - .0028 * CS(2 * d + m - f) * e - .0028 * CS(m1 - f) - .0023 * CS(3 * f) - .0021 * SN(2 * d + f) + .0019 * CS(m1 + 3 * f);
+      Grad += .0018 * CS(d + f) + .0017 * SN(2 * m1 - f) + .0015 * CS(3 * m1 + f) + .0014 * CS(2 * d + 2 * m1 + f) - .0012 * SN(2 * d - 2 * m1 - f) - .0012 * CS(2 * m1) - .001 * CS(m1) - .001 * SN(2 * f) + .0006 * SN(m1 + f);
+      k += 1;
+    }
+    while (JDE < JDA);
+    if (Modus == 0) return JDE;
+    else return Grad;
+  }
+  function Deklination_Sued(Modus){
+    var Heute = new Date();
+    var JDA = Java_JD(Heute.getTime());
+    var k = Math.floor((Dezimaljahr() - 2000.03) * 13.3686);
+    do{
+      var t = k / 1336.86;
+      var d = 345.6676 + 333.0705546 * k - .0004025 * t * t + .00000011 * t * t * t;
+      var m = 1.3951 + 26.9281592 * k - .0000544 * t * t - .0000001 * t * t * t;
+      var m1 = 186.21 + 356.9562795 * k + .0103126 * t * t + .00001251 * t * t * t;
+      var f = 145.1633 + 1.4467806 * k - .0020708 * t * t - .00000215 * t * t * t;
+      var e = 1 - .002516 * t - .0000074 * t * t;
+      var JDE = 2451548.9289 + 27.321582241 * k + .000100695 * t * t - .000000141 * t * t * t;
+      JDE += -.8975 * CS(f) - .4726 * SN(m1) - .103 * SN(2 * f) - .0976 * SN(2 * d - m1) + .0541 * CS(m1 - f) + .0516 * CS(m1 + f) - .0438 * SN(2 * d) + .0112 * SN(m) * e + .0157 * CS(3 * f) + .0023 * SN(m1 + 2 * f) - .0136 * CS(2 * d - f);
+      JDE += .011 * CS(2 * d - m1 - f) + .0091 * CS(2 * d - m1 + f) + .0089 * CS(2 * d + f) + .0075 * SN(2 * m1) - .003 * SN(m1 - 2 * f) - .0061 * CS(2 * m1 - f) - .0047 * SN(m1 + 3 * f) - .0043 * SN(2 * d - m - m1) * e;
+      JDE += .004 * CS(m1 - 2 * f)  - .0037 * SN(2 * d - 2 * m1) - .0031 * SN(f) + .003 * SN(2 * d + m1) + .0029 * CS(m1 + 2 * f) - .0029 * SN(2 * d - m) * e - .0027 * SN(m1 + f) + .0024 * SN(m - m1) * e - .0021 * SN(m1 - 3 * f);
+      JDE += -.0019 * SN(2 * m1 + f) - .0006 * CS(2 * d - 2 * m1 - f) - .0018 * SN(3 * f) - .0017 * CS(m1 + 3 * f) + .0017 * CS(2 * m1) + .0014 * CS(2 * d - m1) - .0013 * CS(2 * d + m1 + f) - .0013 * CS(m1) + .0012 * SN(3 * m1 + f);
+      JDE += .0011 * SN(2 * d - m1 + f) + .0011 * CS(2 * d - 2 * m1) + .001 * CS(d + f) + .001 * SN(m + m1) * e - .0009 * SN(2 * d - 2 * f) - .0007 * CS(2 * m1 + f) - .0007 * CS(3 * m1 + f);
+      var Grad = 23.6961 - .013004 * t - 5.1093 * SN(f) + .2658 * CS(2 * f) - .1448 * SN(2 * d - f) + .0322 * SN(3 * f) + .0133 * CS(2 * d - 2 * f) + .0125 * CS(2 * d) - .0015 * SN(m1 - f) + .0101 * SN(m1 + 2 * f) - .0097 * CS(f);
+      Grad += .0087 * SN(2 * d + m - f) * e + .0074 * SN(m1 + 3 * f) + .0067 * SN(d + f) - .0063 * SN(m1 - 2 * f) - .006 * SN(2 * d - m - f) * e + .0057 * SN(2 * d - m1 - f) - .0056 * CS(m1 + f) - .0052 * CS(m1 + 2 * f) - .0041 * CS(2 * m1 + f);
+      Grad += - .004 * CS(m1 - 3 * f) + .0038 * CS(2 * m1 - f) + .0034 * CS(m1 - 2 * f) - .0029 * SN(2 * m1) + .0029 * SN(3 * m1 + f) + .0028 * CS(2 * d + m - f) * e - .0028 * CS(m1 - f) + .0023 * CS(3 * f) + .0021 * SN(2 * d + f) + .0019 * CS(m1 + 3 * f);
+      Grad += .0018 * CS(d + f) - .0017 * SN(2 * m1 - f) + .0015 * CS(3 * m1 + f) + .0014 * CS(2 * d + 2 * m1 + f) + .0012 * SN(2 * d - 2 * m1 - f) - .0012 * CS(2 * m1) + .001 * CS(m1) - .001 * SN(2 * f) + .0037 * SN(m1 + f);
+      k += 1;
+    }
+    while (JDE < JDA);
+    if (Modus == 0) return JDE;
+    else return Grad;
+  }
+  function Mondknoten(){
+    var k, d, m, m1, o, v, p, JDE;
+    var Heute = new Date();
+    var JDA = Java_JD(Heute.getTime());
+    var k = Math.floor((Dezimaljahr()- 2000.05) * 13.4223);
+    do{
+      t = k / 1342.23
+      d = 183.638 + 331.73735691 * k + 0.0015057 * t * t + 0.00000209 * t * t * t - 0.00000001 * t * t * t * t
+      e = 1 - 0.002516 * t - 0.0000074 * t * t
+      m = 17.4006 + 26.82037250 * k + 0.0000999 * t * t + 0.00000006 * t * t * t
+      m1 = 38.3776 + 355.52747322 * k + 0.0123577 * t * t + 0.000014628 * t * t * t - 0.000000069 * t * t * t * t
+      o = 123.9767 - 1.44098949 * k + 0.0020625 * t * t + 0.00000214 * t * t * t - 0.000000016 * t * t * t * t
+      v = 299.75 + 132.85 * t - 0.009173 * t * t
+      p = o + 272.75 - 2.3 * t
+      JDE = 2451565.1619 + 27.212220817 * k + 0.0002572 * t * t + 0.000000021 * t * t * t - 0.000000000088 * t * t * t * t - .4721 * SN(m1) - 0.1649 * SN(2 * d) - .0868 * SN(2 * d - m1) + 0.0084 * SN(2 * d + m1) - 0.0083 * SN(2 * d - m) * e;
+      JDE += - 0.0039 * SN(2 * d - m - m1) * e + 0.0034 * SN(2 * m1) - 0.0031 * SN(2 * d - 2 * m1) + 0.003 * SN(2 * d + m) * e + 0.0028 * SN(m - m1) * e + 0.0026 * SN(m) + 0.0025 * SN(4 * d) + 0.0024 * SN(d) + 0.0022 * SN(m + m1) * e;
+      JDE += 0.0017 * SN(o) + 0.0014 * SN(4 * d - m1) + 0.0005 * SN(2 * d + m - m1) * e + 0.0004 * SN(2 * d - m + m1) * e - 0.0003 * SN(2 * d - 2 * m) * e + 0.0003 * SN(4 * d - m) * e + 0.0003 * SN(v) + 0.0003 * SN(p);
+      k += .5;
+    }
+    while (JDE < JDA);
+    if(k - Math.floor(k) == 0) JDE = JDE * -1; //absteigend
+    return JDE;
+  }
+  function Apogaeum(){
+    var k, d, m, f, JDE;
+    var Heute = new Date();
+    var JDA = Java_JD(Heute.getTime());
+    k = Math.floor((Dezimaljahr() - 1999.97) * 13.2555) + .5;
+    do{
+      t = k / 1325.55
+      d = 171.9179 + 335.9106046 * k - .010025 * t * t - .00001156 * t * t * t + .000000055 * t * t * t * t;
+      m = 347.3477 + 27.1577721 * k - .0008323 * t * t - .000001 * t * t * t;
+      f = 316.6109 + 364.5287911 * k - .0125131 * t * t - .0000148 * t * t * t;
+      JDE = 2451534.6698 + 27.55454988 * k - .0006886 * t * t - .000001098 * t * t * t + .0000000052 * t * t + .4392 * SN(2 * d) + .0684 * SN(4 * d) + (.0456 - .00011 * t) * SN(m) + (.0426 - .00011 * t) * SN(2 * d - m) + .0212 * SN(2 * f);
+      JDE += - .0189 * SN(d) + .0144 * SN(6 * d) + .0113 * SN(4 * d - m) + .0047 * SN(2 * d + 2 * f) + .0036 * SN(d + m) + .0035 * SN(8 * d) + .0034 * SN(6 * d - m) - .0034 * SN(2 * d - 2 * f) + .0022 * SN(2 * d - 2 * m) - .0017 * SN(3 * d);
+      JDE += .0013 * SN(4 * d + 2 * f) + .0011 * SN(8 * d - m) + .001 * SN(4 * d - 2 * m) + .0009 * SN(10 * d) + .0007 * SN(3 * d + m) + .0006 * SN(2 * m) + .0005 * SN(2 * d + m) + .0005 * SN(2 * d + 2 * m) + .0004 * SN(6 * d + 2 * f);
+      JDE += .0004 * SN(6 * d - 2 * m) + .0004 * SN(10 * d - m) - .0004 * SN(5 * d) - .0004 * SN(4 * d - 2 * f) + .0003 * SN(2 * f + m) + .0003 * SN(12 * d) + .0003 * SN(2 * d + 2 * f - m) - .0003 * SN(d - m);
+      k += 1;
+    }
+    while(JDE < JDA);
+    return JDE;
+  }
+  function Perigaeum(){
+    var k, t, d, m, f, JDE;
+    var Heute = new Date();
+    var JDA = Java_JD(Heute.getTime());
+    k = Math.floor((Dezimaljahr() - 1999.97) * 13.2555);
+    do{
+      t = k / 1325.55
+      d = 171.9179 + 335.9106046 * k - .010025 * t * t - .00001156 * t * t * t + .000000055 * t * t * t * t;
+      m = 347.3477 + 27.1577721 * k - .0008323 * t * t - .000001 * t * t * t;
+      f = 316.6109 + 364.5287911 * k - .0125131 * t * t - .0000148 * t * t * t;
+      JDE = 2451534.6698 + 27.55454988 * k - .0006886 * t * t - .000001098 * t * t * t + .0000000052 * t * t - 1.6769 * SN(2 * d) + .4589 * SN(4 * d) - .1856 * SN(6 * d) + .0883 * SN(8 * d);
+      JDE += - (.0773 + .00019 * t) * SN(2 * d - m) + (.0502 - .00013 * t) * SN(m) - .046 * SN(10 * d) + (.0422 - .00011 * t) * SN(4 * d - m) - .0256 * SN(6 * d - m) + .0253 * SN(12 * d) + .0237 * SN(d);
+      JDE += .0162 * SN(8 * d - m) - .0145 * SN(14 * d) + .0129 * SN(2 * f) - .0112 * SN(3 * d) - .0104 * SN(10 * d - m) + .0086 * SN(16 * d) + .0069 * SN(12 * d - m) + .0066 * SN(5 * d) - .0053 * SN(2 * d + 2 * f);
+      JDE += - .0052 * SN(18 * d) - .0046 * SN(14 * d - m) - .0041 * SN(7 * d) + .004 * SN(2 * d + m) + .0032 * SN(20 * d) - .0032 * SN(d + m) + .0031 * SN(16 * d - m);
+      JDE += - .0029 * SN(4 * d + m) - .0027 * SN(2 * d - 2 * m) + .0024 * SN(4 * d - 2 * m) - .0021 * SN(6 * d - 2 * m) - .0021 * SN(22 * d) - .0021 * SN(18 * d - m);
+      JDE += .0019 * SN(6 * d + m) - .0018 * SN(11 * d) - .0014 * SN(8 * d + m) - .0014 * SN(4 * d - 2 * f) - .0014 * SN(6 * d - 2 * f) + .0014 * SN(3 * d + m) - .0014 * SN(5 * d + m) + .0013 * SN(13 * d);
+      JDE += .0013 * SN(20 * d - m) + .0011 * SN(3 * d + 2 * m) - .0011 * SN(4 * d + 2 * f - 2 * m) - .001 * SN(d + 2 * m) - .0009 * SN(22 * d - m) - .0008 * SN(4 * f) + .0008 * SN(6 * d - 2 * f) + .0008 * SN(2 * d - 2 * f + m);
+      JDE += .0007 * SN(2 * m) + .0007 * SN(2 * f - m) + .0007 * SN(2 * d + 4 * f) - .0006 * SN(2 * f - 2 * m) - .0006 * SN(2 * d - 2 * f + 2 * m) + .0006 * SN(24 * d) + .0005 * SN(4 * d - 4 * f) + .0005 * SN(2 * d + 2 * m) - .0004 * SN(d - m) + .0027 * SN(9 * d) + .0027 * SN(4 * d + 2 * f);
+      k += 1;
+   }
+    while(JDE < JDA);
+    return JDE;
+  }
+  function JD_Java(JD){
+    return (JD - 2440587.5) * 86400000;
+  }
+  function Java_JD(Zeit){
+    return Zeit / 86400000 + 2440587.5;
+  }
+  function Gradumrechnung(Grad){
+    var n1 = "", n2 = "";
+    var G = Math.floor(Grad);
+    var M = Math.floor((Grad - G) * 60);
+    var S = Math.round(((Grad - G) * 60 - M) * 60);
+    if(M < 10) n1 = "0";
+    if(S < 10) n2 = "0";
+    return G + "°" + n1 + M + "'" + n2 + S + "&quot;";
+  }
+  function Ausgabe_des_Mondknotens(){
+    var Minuten, AufAb, GradN, GradS, test, t;
+    var Zeit = new Date();
+    var JDE_dek = new Array(3);
+    var Text_dek = new Array(3);
+
+    //max. nördliche Deklination
+    JDE_dek[1] = Deklination_Nord(0);
+    GradN = Gradumrechnung(Deklination_Nord(1));
+    Zeit.setTime(JD_Java(JDE_dek[1]));
+    (Zeit.getMinutes() < 10) ? Minuten = "0" + Zeit.getMinutes() : Minuten = Zeit.getMinutes();
+    Text_dek[1] = "<tr><td>Die nächste nördliche Deklination " + In_Tagen(JDE_dek[1]) + " <td align=\"right\">" + Zeit.getDate() + "." + (Zeit.getMonth() + 1) + "." + Zeit.getFullYear() + " um<\/td><td align=\"right\">" + Zeit.getHours() + "." + Minuten + " Uhr,<\/td><td> bei " + GradN + "<\/td><\/tr>";
+
+    //Knotendurchgang
+    JDE_dek[2] = Mondknoten();
+    (JDE_dek[2] < 1) ? AufAb = "absteigend" : AufAb = "aufsteigend";
+    JDE_dek[2] = Math.abs(JDE_dek[2]);
+    Zeit.setTime(JD_Java(JDE_dek[2]));
+    (Zeit.getMinutes() < 10) ? Minuten = "0" + Zeit.getMinutes() : Minuten = Zeit.getMinutes();
+    Text_dek[2] = "<tr><td>Der nächste Knotendurchgang " + In_Tagen(JDE_dek[2]) + " <td align=\"right\">" + Zeit.getDate() + "." + (Zeit.getMonth() + 1) + "." + Zeit.getFullYear() + " um<\/td><td align=\"right\">" + Zeit.getHours() + "." + Minuten + " Uhr, <\/td><td>" + AufAb + "<\/td><\/tr>";
+
+    //max. südliche Deklination
+    JDE_dek[3] = Deklination_Sued(0);
+    GradS = Gradumrechnung(Deklination_Sued(1));
+    Zeit.setTime(JD_Java(JDE_dek[3]));
+    (Zeit.getMinutes() < 10) ? Minuten = "0" + Zeit.getMinutes() : Minuten = Zeit.getMinutes();
+    Text_dek[3] = "<tr><td>Die nächste südliche Deklination " + In_Tagen(JDE_dek[3]) + " <td align=\"right\">" + Zeit.getDate() + "." + (Zeit.getMonth() + 1) + "." + Zeit.getFullYear() + " um<\/td><td align=\"right\">" + Zeit.getHours() + "." + Minuten + " Uhr,<\/td><td> bei " + GradS + "<\/td><\/tr>";
+
+
+    do{
+      test = 0;
+      for(t = 1; t < 3; t++){
+        if(JDE_dek[t] > JDE_dek[t + 1]){
+          JDE_dek[0] = JDE_dek[t];
+          JDE_dek[t] = JDE_dek[t + 1];
+          JDE_dek[t + 1] = JDE_dek[0];
+          Text_dek[0] = Text_dek[t];
+          Text_dek[t] = Text_dek[t + 1];
+          Text_dek[t + 1] = Text_dek[0];
+          test = 1;
+        }
+      }
+    }
+    while(test);
+
+    // Tabellenanfang
+    document.write("<h2 align=\"center\">Maximale Deklination und Knotendurchgang<\/h2>");
+    document.write("<table summary=\"Rahmen\" align=\"center\" border=\"1\" bgcolor=\"#000000\"><tr><td>");
+    document.write("<table summary=\"Maximale Deklination und Knotendurchgang\" border=\"0\">");
+
+
+    document.write(Text_dek[1]);
+    document.write(Text_dek[2]);
+    document.write(Text_dek[3]);
+
+     //Tabellenende
+    document.write("<\/table>");
+    document.write("<\/td><\/tr><\/table>");
+  }
+  function Ausgabe_der_Mondentfernung(){
+    var Minuten;
+    var Zeit = new Date();
+    // Tabellenanfang
+    document.write("<h2 align=\"center\">Perigäum und Apogäum<\/h2>");
+    document.write("<table summary=\"Rahmen\" align=\"center\" border=\"1\" bgcolor=\"#000000\"><tr><td>");
+    document.write("<table summary=\"Perigäum und Apogäum\" border=\"0\">");
+    //Perigäum
+    var JDP = Perigaeum();
+    Zeit.setTime(JD_Java(JDP));
+    var km = Math.round(Entfernung(JDP));
+    (Zeit.getMinutes() < 10) ? Minuten = "0" + Zeit.getMinutes() : Minuten = Zeit.getMinutes();
+    var Peri = "<tr><td>Die nächste Mondnähe<\/td><td>" + In_Tagen(JDP) +" <td align=\"right\">" + Zeit.getDate() + "." + (Zeit.getMonth() + 1) + "." + Zeit.getFullYear() + " um<\/td><td align=\"right\">" + Zeit.getHours() + "." + Minuten + " Uhr<\/td><td>bei " + km + " km<\/td><\/tr>";
+    //Apogäum
+    var JDA = Apogaeum();
+    Zeit.setTime(JD_Java(JDA));
+    var km = Math.round(Entfernung(JDA));
+    (Zeit.getMinutes() < 10) ? Minuten = "0" + Zeit.getMinutes() : Minuten = Zeit.getMinutes();
+    var Apog = "<tr><td>Die nächste Mondferne<\/td><td>" + In_Tagen(JDA) +" <td align=\"right\">" + Zeit.getDate() + "." + (Zeit.getMonth() + 1) + "." + Zeit.getFullYear() + " um<\/td><td align=\"right\">" + Zeit.getHours() + "." + Minuten + " Uhr<\/td><td>bei " + km + " km<\/td><\/tr>";
+    //Sortierung
+    if (JDP < JDA)
+      document.write(Peri + Apog);
+    else
+      document.write(Apog + Peri);
+     //Tabellenende
+    document.write("<\/table>");
+    document.write("<\/td><\/tr><\/table>");
+  }
+  function Dezimaljahr(){
+    var Gesamt = 365;
+    var Summe = 0;
+    var Monatstage = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+    var Heute = new Date();
+    var Jahr = Heute.getFullYear();
+    var Monat = Heute.getMonth();
+    var Tag = Heute.getDate();
+    if (Jahr % 4 == 0){
+      Monatstage[1] = 29;
+      Gesamt = 366;
+    }
+    for (t = 0; t < Monat ; t++ ) {
+      Summe += Monatstage[t];
+    }
+    return Jahr + (Summe + Tag) / Gesamt;
+  }
+  function In_Tagen(JDE){
+    var Diff = Tagesdifferenz(JDE);
+    return " ist in <\/td><td align=\"right\">" + Math.floor(Diff) + "," + Math.round((Diff - Math.floor(Diff)) * 10) + "<\/td><td>Tagen am";
+  }
+  function Tagesdifferenz(JDE){
+    // aktuelles Datum
+    var heute = new Date();
+    var JDH = Java_JD(heute);
+    return (Math.round((JDE - JDH) * 10)) /10;
+  }
+  function Var_o(k, t){
+    return 124.7746 - 1.5637558 * k + .0020691 * t * t + .00000215 * t * t * t;
+  }
+  function Var_f(k, t){
+    return 160.7108 + 390.67050274 * k - .0016341 * t * t - .00000227 * t * t * t + .000000011 * t * t * t * t;
+  }
+  function Var_m1(k, t){
+    return 201.5643 + 385.81693528 * k + .1017438 * t * t + .00001239 * t * t * t - .000000058 * t * t * t * t;
+  }
+  function Var_m(k, t){
+    return 2.5534 + 29.10535669 * k - .0000218 * t * t - .00000011 * t * t * t;
+  }
+  function Var_e(t){
+    return 1 - .002516 * t - .0000074 * t * t;
+  }
+  function Var_JDE(k, t){
+    return 2451550.09765 + 29.530588853 * k + .0001337 * t * t - .00000015 * t * t * t + .00000000073 * t * t * t * t;
+  }
+  function Var_k(tz){
+    Heute = new Date();
+    return (Heute.getFullYear() + (Heute.getMonth() * 30.4 + Heute.getDate() + tz) / 365 - 2000) * 12.3685;
+  }
+  function NaechsterVM(zeit){
+    var tz = 0, k;
+    do{
+      k = Var_k(tz);
+      tz += 1;
+    }
+    while(Vollmond(k) < zeit);
+    return Vollmond(k);
+  }
+  function NaechstesLV(zeit){
+    var tz = 0, k;
+    do{
+      k = Var_k(tz);
+      tz += 1;
+    }
+    while(Viertel(k, .75) < zeit);
+    return Viertel(k, .75);
+  }
+  function NaechsterNM(zeit){
+    var tz = 0, k;
+    do{
+      k = Var_k(tz);
+      tz += 1;
+    }
+    while(Neumond(k) < zeit);
+    return Neumond(k);
+  }
+  function NaechstesEV(zeit){
+    var tz = 0, k;
+    do{
+      k = Var_k(tz);
+      tz += 1;
+    }
+    while(Viertel(k, .25) < zeit);
+    return Viertel(k, .25);
+  }
+  function NaechsteMF(zeit, Typ){
+    var tz = 0, k;
+    do{
+      k = Var_k(tz);
+      tz += 1;
+    }
+    while(Finsternis(k, .5, Typ) < zeit);
+    return Finsternis(k, .5, Typ);
+  }
+  function NaechsteSF(zeit, Typ){
+    var tz = 0, k;
+    do{
+      k = Var_k(tz);
+      tz += 1;
+    }
+    while(Finsternis(k, 0, Typ) < zeit);
+    return Finsternis(k, 0, Typ);
+  }
+  function Entfernung(JD){
+    var t, d, m, m1, f, sr;
+    t = (JD - 2451545) / 36525;
+    d = 297.8502042 + 445267.11151686 * t - .00163 * t * t + t * t * t / 545868 - t * t * t * t / 113065000;
+    m = 357.5291092 + 35999.0502909 * t - .0001536 * t * t + t * t * t / 24490000;
+    m1 = 134.9634114 + 477198.8676313 * t + .008997 * t * t + t * t * t / 69699 - t * t * t * t / 14712000;
+    f = 93.27209929999999 + 483202.0175273 * t - .0034029 * t * t - t * t * t / 3526000 + t * t * t * t / 863310000;
+    sr = 385000.56 + Koeffizient(d, m, m1, f) / 1000;
+    return sr;
+  }
+  function Koeffizient(d, m, m1, f){
+    var sr = 0;
+    var t;
+    var kd = new Array(0,2,2,0,0,0,2,2,2,2,0,1,0,2,0,0,4,0,4,2,2,1,1,2,2,4,2,0,2,2,1,2,0,0,2,2,2,4,0,3,2,4,0,2,2,2,4,0,4,1,2,0,1,3,4,2,0,1,2,2);
+    var km = new Array(0,0,0,0,1,0,0,-1,0,-1,1,0,1,0,0,0,0,0,0,1,1,0,1,-1,0,0,0,1,0,-1,0,-2,1,2,-2,0,0,-1,0,0,1,-1,2,2,1,-1,0,0,-1,0,1,0,1,0,0,-1,2,1,0,0);
+    var km1 = new Array(1,-1,0,2,0,0,-2,-1,1,0,-1,0,1,0,1,1,-1,3,-2,-1,0,-1,0,1,2,0,-3,-2,-1,-2,1,0,2,0,-1,1,0,-1,2,-1,1,-2,-1,-1,-2,0,1,4,0,-2,0,2,1,-2,-3,2,1,-1,3,-1);
+    var kf = new Array(0,0,0,0,0,2,0,0,0,0,0,0,0,-2,2,-2,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,-2,2,0,2,0,0,0,0,0,0,-2,0,0,0,0,-2,-2,0,0,0,0,0,0,0,-2);
+    var kr = new Array(-20905355,-3699111,-2955968,-569925,48888,-3149,246158,-152138,-170733,-204586,-129620,108743,104755,10321,0,79661,-34782,-23210,-21636,24208,30824,-8379,-16675,-12831,-10445,-11650,14403,-7003,0,10056,6322,-9884,5751,0,-4950,4130,0,-3958,0,3258,2616,-1897,-2117,2354,0,0,-1423,-1117,-1571,>
+    for (t = 0; t < 60; t++){
+      sr += kr[t] * CS(kd[t] * d + km[t] * m + km1[t] * m1 + kf[t] * f);
+    }
+    return sr;
+  }
+  function Ausgabe_der_Mondphasen(Text, JDE){
+    var Minuten, SText;
+    var Heute = new Date();
+    Heute.setTime(JD_Java(JDE));
+    (Heute.getMinutes() < 10) ? Minuten = "0" + Heute.getMinutes() : Minuten = Heute.getMinutes();
+     document.write("<tr><td>" + Text + In_Tagen(JDE)+ "<\/td><td align=\"right\">" + Heute.getDate() + "." + (Heute.getMonth() + 1) + "." + Heute.getFullYear() + " um<\/td><td align=\"right\">" + Heute.getHours() + "." + Minuten + " Uhr<\/td><\/tr>");
+  }
+
+  function NaechsteMondphasen(){
+    var JDE_mondphase = new Array(4);
+    var JDE_finsternis = new Array(5);
+    var Text_mondphase = new Array(" ","Nächster Vollmond","Das nächste Letzte Viertel","Nächster Neumond","Das nächste Erste Viertel");
+    var Text_finsternis = new Array(" ","Die nächste partielle Mondfinsternis","Die nächste totale Mondfinsternis","Die nächste partielle Sonnenfinsternis","Die nächste totale Sonnenfinsternis","Die nächste ringförmige Sonnenfinsternis");
+    var test, t;
+    var Heute = new Date();
+    var zeit =  Java_JD(Heute.getTime());
+
+    JDE_mondphase[1] = NaechsterVM(zeit);
+    JDE_mondphase[2] = NaechstesLV(zeit);
+    JDE_mondphase[3] = NaechsterNM(zeit);
+    JDE_mondphase[4] = NaechstesEV(zeit);
+    JDE_finsternis[1] = NaechsteMF(zeit, 0); //partiell
+    JDE_finsternis[2] = NaechsteMF(zeit, 1); //total
+    JDE_finsternis[3] = NaechsteSF(zeit, 0); //partiell
+    JDE_finsternis[4] = NaechsteSF(zeit, 1); //total
+    JDE_finsternis[5] = NaechsteSF(zeit, 2); //ring
+
+   do{
+      test = 0;
+      for(t = 1; t < 4; t++){
+        if(JDE_mondphase[t] > JDE_mondphase[t + 1]){
+          JDE_mondphase[0] = JDE_mondphase[t];
+          JDE_mondphase[t] = JDE_mondphase[t + 1];
+          JDE_mondphase[t + 1] = JDE_mondphase[0];
+          Text_mondphase[0] = Text_mondphase[t];
+          Text_mondphase[t] = Text_mondphase[t + 1];
+          Text_mondphase[t + 1] = Text_mondphase[0];
+          test = 1;
+        }
+      }
+    }
+    while(test);
+
+     do{
+      test = 0;
+      for(t = 1; t < 5; t++){
+        if(JDE_finsternis[t] > JDE_finsternis[t + 1]){
+          JDE_finsternis[0] = JDE_finsternis[t];
+          JDE_finsternis[t] = JDE_finsternis[t + 1];
+          JDE_finsternis[t + 1] = JDE_finsternis[0];
+          Text_finsternis[0] = Text_finsternis[t];
+          Text_finsternis[t] = Text_finsternis[t + 1];
+          Text_finsternis[t + 1] = Text_finsternis[0];
+          test = 1;
+        }
+      }
+    }
+    while(test);
+    document.write("<h2 align=\"center\">Die nächsten Mondphasen<\/h2>");
+    document.write("<table summary=\"Rahmen\" align=\"center\" border=\"1\" bgcolor=\"#000000\"><tr><td>");
+    document.write("<table summary=\"Mondphasen\" border=\"0\">");
+    for(t = 1; t < 5; t++){
+      Ausgabe_der_Mondphasen(Text_mondphase[t], JDE_mondphase[t]);
+    }
+    document.write("<\/table>");
+    document.write("<\/td><\/tr><\/table>");
+
+    document.write("<h2 align=\"center\">Die nächsten Finsternisse<\/h2>");
+    document.write("<table summary=\"Rahmen\" align=\"center\" border=\"1\" bgcolor=\"#000000\"><tr><td>");
+    document.write("<table summary=\"Finsternisse\" border=\"0\">");
+    for(t = 1; t < 6; t++){
+      Ausgabe_der_Mondphasen(Text_finsternis[t], JDE_finsternis[t]);
+    }
+    document.write("<\/table>");
+    document.write("<\/td><\/tr><\/table>");
+  }
+  function Mondtag(){
+    //Bezug ist der Neumond am 6.1.2001
+    var Bild;
+    var Bildmenge = 32; // Die Menge der einzelnen Mondbilder
+    var bk = 29.53059 / Bildmenge / 5 // Ein Fünftel der Bilder-Schrittweite, benötigt zur rechtzeitigen Anzeige der Viertel
+    var k = Var_k(0);
+    var Heute = new Date();
+    var JD = Java_JD(Heute.getTime());
+
+    var neumond = (Neumond(k) - JD);
+    var erstesviertel = (Viertel(k, .25) - JD);
+    var letztesviertel = (Viertel(k, .75) - JD);
+    var vollmond = (Vollmond(k) - JD);
+
+    BeleuchtungZeile(JD);
+    EntfernungZeile(JD);
+
+    if (Math.abs(neumond) < Math.abs(erstesviertel) && Math.abs(neumond) < Math.abs(letztesviertel) && Math.abs(neumond) < Math.abs(vollmond)){
+      Bild = 1 - Math.round(neumond * Bildmenge / 29.53059);
+      if (neumond < bk && Bild > Math.round(Bildmenge / 4 * 3 + 1)) Bild = 1; // Damit das Bild auf jeden Fall rechtzeitg gezeigt wird.
+      if (Bild < 1) Bild += Bildmenge;
+      (neumond > 0) ? document.mond.text.value = "Nächster Neumond ist in:" : document.mond.text.value = "Letzter Neumond war vor:";
+      ZeitZeile(Math.abs(neumond));
+    }
+    if (Math.abs(erstesviertel) < Math.abs(neumond) && Math.abs(erstesviertel) < Math.abs(letztesviertel) && Math.abs(erstesviertel) < Math.abs(vollmond)){
+      Bild = Math.round(Bildmenge / 4 + 1 - erstesviertel * Bildmenge / 29.53059);
+      if (erstesviertel < bk && Bild < Math.round(Bildmenge / 4 + 1)) Bild =  Math.round(Bildmenge / 4 + 1);
+      (erstesviertel > 0) ? document.mond.text.value = "Das nächste Erste Viertel ist in:" : document.mond.text.value = "Das letzte Erste Viertel war vor:";
+      ZeitZeile(Math.abs(erstesviertel));
+    }
+    if (Math.abs(vollmond) < Math.abs(neumond) && Math.abs(vollmond) < Math.abs(letztesviertel) && Math.abs(vollmond) < Math.abs(erstesviertel)){
+      Bild = Math.round(Bildmenge / 2 + 1 - vollmond * Bildmenge / 29.53059);
+      if (vollmond < bk && Bild < Math.round(Bildmenge / 2 + 1)) Bild =  Math.round(Bildmenge / 2 + 1);
+      (vollmond > 0) ? document.mond.text.value = "Nächster Vollmond ist in:" : document.mond.text.value = "Letzter Vollmond war vor:";
+      ZeitZeile(Math.abs(vollmond));
+    }
+    if (Math.abs(letztesviertel) < Math.abs(neumond) && Math.abs(letztesviertel) < Math.abs(vollmond) && Math.abs(letztesviertel) < Math.abs(erstesviertel)){
+      Bild = Bildmenge - Math.round(neumond * Bildmenge / 29.53059);
+      if (Bild > Bildmenge) Bild += - Bildmenge;
+      if (letztesviertel < bk && Bild < Math.round(Bildmenge / 4 * 3 + 1)) Bild =  Math.round(Bildmenge / 4 * 3 + 1);
+      (letztesviertel > 0) ? document.mond.text.value = "Das nächste Letzte Viertel ist in:" : document.mond.text.value =  "Das letzte Letzte Viertel war vor:";
+      ZeitZeile(Math.abs(letztesviertel));
+    }
+
+    window.setTimeout('Mondtag()',1000);
+    return Bild
+  }
+  function MondAusgabe(){
+     document.write("<p align=\"center\">");
+     document.write("<img src=\"mondphasenbilder/" + Mondtag() + ".jpg \" width=\"580\" height=\"470\" alt=\"Die aktuelle Mondphase \" border=\"2\">");
+     document.write("<\/p>");
+  }
+  function JD_Stunde(JDE){
+    return Math.floor((24 * (JDE - Math.floor(JDE))));
+  }
+  function JD_Minute(JDE){
+    return Math.floor((JDE - Math.floor(JDE)) * 1440 - JD_Stunde(JDE) * 60);
+  }
+  function JD_Sekunde(JDE){
+    return Math.floor((JDE - Math.floor(JDE)) * 86400 - JD_Stunde(JDE) * 3600 - JD_Minute(JDE) * 60);
+  }
+  function ZeitZeile(JDE){
+    document.mond.tag.value = Math.floor(JDE);
+    document.mond.std.value = JD_Stunde(JDE);
+    document.mond.min.value = JD_Minute(JDE);
+    document.mond.sek.value = JD_Sekunde(JDE);
+  }
+  function BeleuchtungZeile(zeit){
+    document.mond.beleuchtung.value = "Beleuchteter Teil der Mondscheibe:";
+    document.mond.sch.value = Math.round(Beleuchtung(zeit) * 10000) / 10000;
+  }
+  function EntfernungZeile(zeit){
+    document.mond.entfernung.value = "Entfernung zw. Erd- und Mondmittelpunkt:";
+    document.mond.ent.value = Math.round(Entfernung(zeit) * 10) / 10;
+  }
+  function CS(x){
+    return Math.cos(x * .0174532925199433);
+  }
+  function SN(x){
+    return Math.sin(x * .0174532925199433);
+  }
+
+//-->
+</script>
+</head>
+<body text="#ffffff" onload="window.setTimeout('Mondtag()', 1000)">
+<table summary="Navigator" border="0" align="center">
+<tr>
+</tr>
+</table>
+<h1 align="center">Freiburg Mondphase Sonnenaufgang Sonnenuntergang</h1>
+<form name="mond" action="/">
+<table summary="Formrahmen" align="center" border="1">
+<tr><td>
+<table summary="Form">
+<tr>
+<td align="center" colspan="4"><input size="50" type="text" name="text"></td>
+</tr>
+<tr>
+<td align="center"><input size="2" type="text" name="tag">&nbsp;Tag(e)</td>
+<td align="center"><input size="2" type="text" name="std">&nbsp;Std.</td>
+<td align="center"><input size="2" type="text" name="min">&nbsp;Min.</td>
+<td align="center"><input size="2" type="text" name="sek">&nbsp;Sek.</td>
+</tr>
+<tr>
+<td align="center" colspan="4"><input size="50" type="text" name="beleuchtung"></td>
+</tr>
+<tr>
+<td colspan="4" align="center"><input size="7" type="text" name="sch">&nbsp;%</td>
+</tr>
+<tr>
+<td align="center" colspan="4"><input size="50" type="text" name="entfernung"></td>
+</tr>
+<tr>
+<td colspan="4" align="center"><input size="8" type="text" name="ent">&nbsp;km</td>
+</tr>
+</table>
+</td></tr>
+</table>
+</form>
+<script type="text/javascript">
+<!--
+MondAusgabe();
+NaechsteMondphasen();
+Ausgabe_der_Mondentfernung();
+Ausgabe_des_Mondknotens();
+//-->
+</script>
+<h2 align="center">Monddaten</h2>
+<table summary="Rahmen" align="center" border="1" bgcolor="#000000">
+<tr><td>
+<table summary="Daten" align="center" border="0" bgcolor="#000000">
+<tr><td>Größte Entfernung zur Erde</td><td align="right">406740 km</td></tr>
+<tr><td>Mittlere Entfernung zur Erde</td><td align="right">384403 km</td></tr>
+<tr><td>Kleinste Entfernung zur Erde</td><td align="right">356410 km</td></tr>
+<tr><td>Umfang</td><td align="right">10920 km</td></tr>
+<tr><td>Volumen</td><td align="right">2,199 * 10<sup>10</sup> km<sup>3</sup></td></tr>
+<tr><td>Masse</td><td align="right">7,350 * 10<sup>22</sup> kg</td></tr>
+<tr><td>Oberflächentemperatur bei Vollmond</td><td align="right">+120°C</td></tr>
+<tr><td>Oberflächentemperatur bei Neumond</td><td align="right">-130°C</td></tr>
+<tr><td>Synodische Umlaufzeit in mittleren Tagen</td><td align="right">29,53059</td></tr>
+<tr><td>Siderische Umlaufzeit in mittleren Tagen</td><td align="right">27,32166</td></tr>
+</table>
+</td></tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+pi = Math.PI;
+DEG = pi/180.0;
+RAD = 180./pi;
+
+
+function sqr(x)
+{
+  return x*x;
+}
+
+
+// return integer value, closer to 0
+function Int(x)
+{
+  if (x<0) { return(Math.ceil(x)); } else return(Math.floor(x));
+}
+
+function frac(x) { return(x-Math.floor(x)); }
+
+function Mod(a, b) { return(a-Math.floor(a/b)*b); }
+
+
+// Modulo PI
+function Mod2Pi(x)
+{
+  x = Mod(x, 2.*pi);
+  return(x);
+}
+
+
+function round100000(x) { return(Math.round(100000.*x)/100000.); }
+function round10000(x) { return(Math.round(10000.*x)/10000.); }
+function round1000(x) { return(Math.round(1000.*x)/1000.); }
+function round100(x) { return(Math.round(100.*x)/100.); }
+function round10(x) { return(Math.round(10.*x)/10.); }
+
+var empty = "heute nicht mehr";
+//var empty = "--";
+
+function HHMM(hh)
+{
+  if (hh==0) return(empty);
+
+  m = frac(hh)*60.;
+  var h = Int(hh);
+  if (m>=59.5) { h++; m -=60.; }
+  m = Math.round(m);
+  if (h<10) h = "0"+h;
+  h = h+":";
+  if (m<10) h = h+"0";
+  h = h+m;
+  return(h+" = "+round1000(hh));
+}
+
+function HHMMSS(hh)
+{
+  if (hh==0) return(empty);
+
+  m = frac(hh)*60;
+  var h = Int(hh);
+  s = frac(m)*60.;
+  m = Int(m);
+  if (s>=59.5) { m++; s -=60.; }
+  if (m>=60)   { h++; m -=60; }
+  s = Math.round(s);
+  if (h<10) h = "0"+h;
+  h = h+":";
+  if (m<10) h = h+"0";
+  h = h+m+":";
+  if (s<10) h = h+"0";
+  h = h+s;
+  return(h+" = "+round10000(hh));
+}
+
+
+function Sign(lon)
+{
+  var signs= new Array("Widder", "Stier", "Zwillinge", "Krebs", "Löwe", "Jungfrau",
+    "Waage", "Skorpion", "Schütze", "Steinbock", "Wassermann", "Fische");
+  return( signs[Math.floor(lon*RAD/30)] );
+}
+
+
+// Calculate Julian date: valid only from 1.3.1901 to 28.2.2100
+function CalcJD(day,month,year)
+{
+  jd = 2415020.5-64; // 1.1.1900 - correction of algorithm
+  if (month<=2) { year--; month += 12; }
+  jd += Int( (year-1900)*365.25 );
+  jd += Int( 30.6001*(1+month) );
+  return(jd + day);
+}
+
+
+// Julian Date to Greenwich Mean Sidereal Time
+function GMST(JD)
+{
+  var UT = frac(JD-0.5)*24.; // UT in hours
+  JD = Math.floor(JD-0.5)+0.5;   // JD at 0 hours UT
+  var T = (JD-2451545.0)/36525.0;
+  T0 = 6.697374558 + T*(2400.051336 + T*0.000025862);
+  return(Mod(T0+UT*1.002737909, 24.));
+}
+
+
+// Convert Greenweek mean sidereal time to UT
+function GMST2UT(JD, gmst)
+{
+  JD = Math.floor(JD-0.5)+0.5;   // JD at 0 hours UT
+  var T = (JD-2451545.0)/36525.0;
+  var T0 = Mod(6.697374558 + T*(2400.051336 + T*0.000025862), 24.);
+  //var UT = 0.9972695663*Mod((gmst-T0), 24.);
+  var UT = 0.9972695663*((gmst-T0));
+  return(UT);
+}
+
+
+// Local Mean Sidereal Time, geographical longitude in radians, East is positive
+function GMST2LMST(gmst, lon)
+{
+  var lmst = Mod(gmst+RAD*lon/15, 24.);
+  return( lmst );
+}
+
+
+// Transform ecliptical coordinates (lon/lat) to equatorial coordinates (RA/dec)
+function Ecl2Equ(coor, TDT)
+{
+  T = (TDT-2451545.0)/36525.; // Epoch 2000 January 1.5
+  eps = (23.+(26+21.45/60.)/60. + T*(-46.815 +T*(-0.0006 + T*0.00181) )/3600. )*DEG;
+  var coseps = Math.cos(eps);
+  var sineps = Math.sin(eps);
+
+  var sinlon = Math.sin(coor.lon);
+  coor.ra  = Mod2Pi( Math.atan2( (sinlon*coseps-Math.tan(coor.lat)*sineps), Math.cos(coor.lon) ) );
+  coor.dec = Math.asin( Math.sin(coor.lat)*coseps + Math.cos(coor.lat)*sineps*sinlon );
+
+  return coor;
+}
+
+
+// Transform equatorial coordinates (RA/Dec) to horizonal coordinates (azimuth/altitude)
+// Refraction is ignored
+function Equ2Altaz(coor, TDT, geolat, lmst)
+{
+  var cosdec = Math.cos(coor.dec);
+  var sindec = Math.sin(coor.dec);
+  var lha = lmst - coor.ra;
+  var coslha = Math.cos(lha);
+  var sinlha = Math.sin(lha);
+  var coslat = Math.cos(geolat);
+  var sinlat = Math.sin(geolat);
+
+  var N = -cosdec * sinlha;
+  var D = sindec * coslat - cosdec * coslha * sinlat;
+  coor.az = Mod2Pi( Math.atan2(N, D) );
+  coor.alt = Math.asin( sindec * sinlat + cosdec * coslha * coslat );
+
+  return coor;
+  }
+
+
+// Transform geocentric equatorial coordinates (RA/Dec) to topocentric equatorial coordinates
+function GeoEqu2TopoEqu(coor, observer, lmst)
+{
+  var cosdec = Math.cos(coor.dec);
+  var sindec = Math.sin(coor.dec);
+  var coslst = Math.cos(lmst);
+  var sinlst = Math.sin(lmst);
+  var coslat = Math.cos(observer.lat); // we should use geocentric latitude, not geodetic latitude
+  var sinlat = Math.sin(observer.lat);
+  var rho = observer.radius; // observer-geocenter in Kilometer
+
+  var x = coor.distance*cosdec*Math.cos(coor.ra) - rho*coslat*coslst;
+  var y = coor.distance*cosdec*Math.sin(coor.ra) - rho*coslat*sinlst;
+  var z = coor.distance*sindec - rho*sinlat;
+
+  coor.distanceTopocentric = Math.sqrt(x*x + y*y + z*z);
+  coor.decTopocentric = Math.asin(z/coor.distanceTopocentric);
+  coor.raTopocentric = Mod2Pi( Math.atan2(y, x) );
+
+  return coor;
+}
+
+
+// Calculate cartesian from polar coordinates
+function EquPolar2Cart( lon, lat, distance )
+{
+  var cart = new Object();
+  rcd = Math.cos(lat)*distance;
+  cart.x = rcd*Math.cos(lon);
+  cart.y = rcd*Math.sin(lon);
+  cart.z = distance * Math.sin(lat);
+  return(cart);
+}
+
+
+// Calculate observers cartesian equatorial coordinates (x,y,z in celestial frame)
+// from geodetic coordinates (longitude, latitude, height above WGS84 ellipsoid)
+// Currently only used to calculate distance of a body from the observer
+function Observer2EquCart( lon, lat, height, gmst )
+{
+  flat = 298.257223563;        // WGS84 flatening of earth
+  aearth = 6378.137;           // GRS80/WGS84 semi major axis of earth ellipsoid
+  var cart = new Object();
+  // Calculate geocentric latitude from geodetic latitude
+  co = Math.cos (lat);
+  si = Math.sin (lat);
+  fl = 1.0 - 1.0 / flat;
+  fl = fl * fl;
+  si = si * si;
+  u = 1.0 / Math.sqrt (co * co + fl * si);
+  a = aearth * u + height;
+  b = aearth * fl * u + height;
+  radius = Math.sqrt (a * a * co * co + b * b * si); // geocentric distance from earth center
+  cart.y = Math.acos (a * co / radius); // geocentric latitude, rad
+  cart.x = lon; // longitude stays the same
+  if (lat < 0.0) { cart.y = -cart.y; } // adjust sign
+  cart = EquPolar2Cart( cart.x, cart.y, radius ); // convert from geocentric polar to geocentric cartesian, with regard to Greenwich
+  // rotate around earth's polar axis to align coordinate system from Greenwich to vernal equinox
+  x=cart.x; y=cart.y;
+  rotangle = gmst/24*2*pi; // sideral time gmst given in hours. Convert to radians
+  cart.x = x*Math.cos(rotangle)-y*Math.sin(rotangle);
+  cart.y = x*Math.sin(rotangle)+y*Math.cos(rotangle);
+  cart.radius = radius;
+  cart.lon = lon;
+  cart.lat = lat;
+  return(cart);
+}
+
+
+// Calculate coordinates for Sun
+// Coordinates are accurate to about 10s (right ascension)
+// and a few minutes of arc (declination)
+function SunPosition(TDT, geolat, lmst)
+{
+  var D = TDT-2447891.5;
+
+  var eg = 279.403303*DEG;
+  var wg = 282.768422*DEG;
+  var e  = 0.016713;
+  var a  = 149598500; // km
+  var diameter0 = 0.533128*DEG; // angular diameter of Moon at a distance
+
+  var MSun = 360*DEG/365.242191*D+eg-wg;
+  var nu = MSun + 360.*DEG/pi*e*Math.sin(MSun);
+
+  var sunCoor = new Object();
+  sunCoor.lon =  Mod2Pi(nu+wg);
+  sunCoor.lat = 0;
+  sunCoor.anomalyMean = MSun;
+
+  sunCoor.distance = (1-sqr(e))/(1+e*Math.cos(nu)); // distance in astronomical units
+  sunCoor.diameter = diameter0/sunCoor.distance; // angular diameter in radians
+  sunCoor.distance *= a;                         // distance in km
+  sunCoor.parallax = 6378.137/sunCoor.distance;  // horizonal parallax
+
+  sunCoor = Ecl2Equ(sunCoor, TDT);
+
+  // Calculate horizonal coordinates of sun, if geographic positions is given
+  if (geolat!=null && lmst!=null) {
+    sunCoor = Equ2Altaz(sunCoor, TDT, geolat, lmst);
+  }
+
+  sunCoor.sign = Sign(sunCoor.lon);
+  return sunCoor;
+}
+
+
+// Calculate data and coordinates for the Moon
+// Coordinates are accurate to about 1/5 degree (in ecliptic coordinates)
+function MoonPosition(sunCoor, TDT, observer, lmst)
+{
+  var D = TDT-2447891.5;
+  // Mean Moon orbit elements as of 1990.0
+  var l0 = 318.351648*DEG;
+  var P0 =  36.340410*DEG;
+  var N0 = 318.510107*DEG;
+  var i  = 5.145396*DEG;
+  var e  = 0.054900;
+  var a  = 384401; // km
+  var diameter0 = 0.5181*DEG; // angular diameter of Moon at a distance
+  var parallax0 = 0.9507*DEG; // parallax at distance a
+
+  var l = 13.1763966*DEG*D+l0;
+  var MMoon = l-0.1114041*DEG*D-P0; // Moon's mean anomaly M
+  var N = N0-0.0529539*DEG*D;       // Moon's mean ascending node longitude
+  var C = l-sunCoor.lon;
+  var Ev = 1.2739*DEG*Math.sin(2*C-MMoon);
+  var Ae = 0.1858*DEG*Math.sin(sunCoor.anomalyMean);
+  var A3 = 0.37*DEG*Math.sin(sunCoor.anomalyMean);
+  var MMoon2 = MMoon+Ev-Ae-A3;  // corrected Moon anomaly
+  var Ec = 6.2886*DEG*Math.sin(MMoon2);  // equation of centre
+  var A4 = 0.214*DEG*Math.sin(2*MMoon2);
+  var l2 = l+Ev+Ec-Ae+A4; // corrected Moon's longitude
+  var V = 0.6583*DEG*Math.sin(2*(l2-sunCoor.lon));
+  var l3 = l2+V; // true orbital longitude;
+
+  var N2 = N-0.16*DEG*Math.sin(sunCoor.anomalyMean);
+
+  var moonCoor = new Object();
+  moonCoor.lon = Mod2Pi( N2 + Math.atan2( Math.sin(l3-N2)*Math.cos(i), Math.cos(l3-N2) ) );
+  moonCoor.lat = Math.asin( Math.sin(l3-N2)*Math.sin(i) );
+  moonCoor.orbitLon = l3;
+
+  moonCoor = Ecl2Equ(moonCoor, TDT);
+  // relative distance to semi mayor axis of lunar oribt
+  moonCoor.distance = (1-sqr(e)) / (1+e*Math.cos(MMoon2+Ec) );
+  moonCoor.diameter = diameter0/moonCoor.distance; // angular diameter in radians
+  moonCoor.parallax = parallax0/moonCoor.distance; // horizontal parallax in radians
+  moonCoor.distance *= a; // distance in km
+
+  // Calculate horizonal coordinates of sun, if geographic positions is given
+  if (observer!=null && lmst!=null) {
+    // transform geocentric coordinates into topocentric (==observer based) coordinates
+        moonCoor = GeoEqu2TopoEqu(moonCoor, observer, lmst);
+        moonCoor.raGeocentric = moonCoor.ra; // backup geocentric coordinates
+        moonCoor.decGeocentric = moonCoor.dec;
+        moonCoor.ra=moonCoor.raTopocentric;
+        moonCoor.dec=moonCoor.decTopocentric;
+    moonCoor = Equ2Altaz(moonCoor, TDT, observer.lat, lmst); // now ra and dec are topocentric
+  }
+
+  // Age of Moon in radians since New Moon (0) - Full Moon (pi)
+  moonCoor.moonAge = Mod2Pi(l3-sunCoor.lon);
+  moonCoor.phase   = 0.5*(1-Math.cos(moonCoor.moonAge)); // Moon phase, 0-1
+
+  var phases = new Array("Neumond", "Zunehmende Sichel", "Erstes Viertel", "Zunehmender Mond",
+   "Vollmond", "Abnehmender Mond", "Letztes Viertel", "Abnehmende Sichel", "Neumond");
+  var mainPhase = 1./29.53*360*DEG; // show 'Newmoon, 'Quarter' for +/-1 day arond the actual event
+  var p = Mod(moonCoor.moonAge, 90.*DEG);
+  if (p < mainPhase || p > 90*DEG-mainPhase) p = 2*Math.round(moonCoor.moonAge / (90.*DEG));
+  else p = 2*Math.floor(moonCoor.moonAge / (90.*DEG))+1;
+  moonCoor.moonPhase = phases[p];
+
+  moonCoor.sign = Sign(moonCoor.lon);
+
+  return(moonCoor);
+}
+
+
+// Rough refraction formula using standard atmosphere: 1015 mbar and 10ḞC
+// Input true altitude in radians, Output: increase in altitude in degrees
+function Refraction(alt)
+{
+  var altdeg = alt*RAD;
+  if (altdeg<-2 || altdeg>=90) return(0);
+
+  var pressure    = 1015;
+  var temperature = 10;
+  if (altdeg>15) return( 0.00452*pressure/( (273+temperature)*Math.tan(alt)) );
+
+  var y = alt;
+  var D = 0.0;
+  var P = (pressure-80.)/930.;
+  var Q = 0.0048*(temperature-10.);
+  var y0 = y;
+  var D0 = D;
+
+  for (i=0; i<3; i++) {
+          N = y+(7.31/(y+4.4));
+          N = 1./Math.tan(N*DEG);
+          D = N*P/(60.+Q*(N+39.));
+          N = y-y0;
+          y0 = D-D0-N;
+          if ((N != 0.) && (y0 != 0.)) { N = y-N*(alt+D-y)/y0; }
+          else { N = alt+D; }
+          y0 = y;
+          D0 = D;
+          y = N;
+  }
+  return( D ); // Hebung durch Refraktion in radians
+}
+
+
+// returns Greenwich sidereal time (hours) of time of rise
+// and set of object with coordinates coor.ra/coor.dec
+// at geographic position lon/lat (all values in radians)
+// Correction for refraction and semi-diameter/parallax of body is taken care of in function RiseSet
+// h is used to calculate the twilights. It gives the required elevation of the disk center of the sun
+function GMSTRiseSet(coor, lon, lat, h)
+{
+  var h = (h == null) ? 0. : h; // set default value
+  var riseset = new Object();
+//  var tagbogen = Math.acos(-Math.tan(lat)*Math.tan(coor.dec)); // simple formula if twilight is not required
+  var tagbogen = Math.acos((Math.sin(h) - Math.sin(lat)*Math.sin(coor.dec)) / (Math.cos(lat)*Math.cos(coor.dec)));
+
+  riseset.transit =     RAD/15*(         +coor.ra-lon);
+  riseset.rise    = 24.+RAD/15*(-tagbogen+coor.ra-lon); // calculate GMST of rise of object
+  riseset.set     =     RAD/15*(+tagbogen+coor.ra-lon); // calculate GMST of set of object
+
+  // using the modulo function Mod, the day number goes missing. This may get a problem for the moon
+  riseset.transit = Mod(riseset.transit, 24);
+  riseset.rise    = Mod(riseset.rise, 24);
+  riseset.set     = Mod(riseset.set, 24);
+
+  return(riseset);
+  }
+
+
+// Find GMST of rise/set of object from the two calculates
+// (start)points (day 1 and 2) and at midnight UT(0)
+function InterpolateGMST(gmst0, gmst1, gmst2, timefactor)
+{
+  return( (timefactor*24.07*gmst1- gmst0*(gmst2-gmst1)) / (timefactor*24.07+gmst1-gmst2) );
+}
+
+
+// JD is the Julian Date of 0h UTC time (midnight)
+function RiseSet(jd0UT, coor1, coor2, lon, lat, timeinterval, altitude)
+{
+  // altitude of sun center: semi-diameter, horizontal parallax and (standard) refraction of 34'
+  var alt = 0.; // calculate
+  var altitude = (altitude == null) ? 0. : altitude; // set default value
+
+  // true height of sun center for sunrise and set calculation. Is kept 0 for twilight (ie. altitude given):
+  if (!altitude) alt = 0.5*coor1.diameter-coor1.parallax+34./60*DEG;
+
+  var rise1 = GMSTRiseSet(coor1, lon, lat, altitude);
+  var rise2 = GMSTRiseSet(coor2, lon, lat, altitude);
+
+  var rise = new Object();
+
+  // unwrap GMST in case we move across 24h -> 0h
+  if (rise1.transit > rise2.transit && Math.abs(rise1.transit-rise2.transit)>18) rise2.transit += 24;
+  if (rise1.rise    > rise2.rise    && Math.abs(rise1.rise   -rise2.rise)>18)    rise2.rise += 24;
+  if (rise1.set     > rise2.set     && Math.abs(rise1.set    -rise2.set)>18)     rise2.set  += 24;
+  var T0 = GMST(jd0UT);
+  //  var T02 = T0-zone*1.002738; // Greenwich sidereal time at 0h time zone (zone: hours)
+
+  // Greenwich sidereal time for 0h at selected longitude
+  var T02 = T0-lon*RAD/15*1.002738; if (T02 < 0) T02 += 24;
+
+  if (rise1.transit < T02) { rise1.transit += 24; rise2.transit += 24; }
+  if (rise1.rise    < T02) { rise1.rise    += 24; rise2.rise    += 24; }
+  if (rise1.set     < T02) { rise1.set     += 24; rise2.set     += 24; }
+
+  // Refraction and Parallax correction
+  var decMean = 0.5*(coor1.dec+coor2.dec);
+  var psi = Math.acos(Math.sin(lat)/Math.cos(decMean));
+  var y = Math.asin(Math.sin(alt)/Math.sin(psi));
+  var dt = 240*RAD*y/Math.cos(decMean)/3600; // time correction due to refraction, parallax
+
+  rise.transit = GMST2UT( jd0UT, InterpolateGMST( T0, rise1.transit, rise2.transit, timeinterval) );
+  rise.rise    = GMST2UT( jd0UT, InterpolateGMST( T0, rise1.rise,    rise2.rise,    timeinterval) -dt );
+  rise.set     = GMST2UT( jd0UT, InterpolateGMST( T0, rise1.set,     rise2.set,     timeinterval) +dt );
+
+  return(rise);
+}
+
+
+// Find (local) time of sunrise and sunset, and twilights
+// JD is the Julian Date of 0h local time (midnight)
+// Accurate to about 1-2 minutes
+// recursive: 1 - calculate rise/set in UTC in a second run
+// recursive: 0 - find rise/set on the current local day. This is set when doing the first call to this function
+function SunRise(JD, deltaT, lon, lat, zone, recursive)
+{
+  var jd0UT = Math.floor(JD-0.5)+0.5;   // JD at 0 hours UT
+  var coor1 = SunPosition(jd0UT+  deltaT/24./3600.);
+  var coor2 = SunPosition(jd0UT+1.+deltaT/24./3600.); // calculations for next day's UTC midnight
+
+  var risetemp = new Object();
+  var rise = new Object();
+  // rise/set time in UTC.
+  rise = RiseSet(jd0UT, coor1, coor2, lon, lat, 1);
+  if (!recursive) { // check and adjust to have rise/set time on local calendar day
+    if (zone>0) {
+      // rise time was yesterday local time -> calculate rise time for next UTC day
+      if (rise.rise>=24-zone || rise.transit>=24-zone || rise.set>=24-zone) {
+        risetemp = SunRise(JD+1, deltaT, lon, lat, zone, 1);
+        if (rise.rise>=24-zone) rise.rise = risetemp.rise;
+        if (rise.transit >=24-zone) rise.transit = risetemp.transit;
+        if (rise.set >=24-zone) rise.set  = risetemp.set;
+      }
+    }
+    else if (zone<0) {
+      // rise time was yesterday local time -> calculate rise time for next UTC day
+      if (rise.rise<-zone || rise.transit<-zone || rise.set<-zone) {
+        risetemp = SunRise(JD-1, deltaT, lon, lat, zone, 1);
+        if (rise.rise<-zone) rise.rise = risetemp.rise;
+        if (rise.transit<-zone) rise.transit = risetemp.transit;
+        if (rise.set <-zone) rise.set  = risetemp.set;
+      }
+    }
+
+    rise.transit = Mod(rise.transit+zone, 24.);
+    rise.rise    = Mod(rise.rise   +zone, 24.);
+    rise.set     = Mod(rise.set    +zone, 24.);
+
+        // Twilight calculation
+        // civil twilight time in UTC.
+        risetemp = RiseSet(jd0UT, coor1, coor2, lon, lat, 1, -6.*DEG);
+        rise.cicilTwilightMorning = Mod(risetemp.rise +zone, 24.);
+        rise.cicilTwilightEvening = Mod(risetemp.set  +zone, 24.);
+
+        // nautical twilight time in UTC.
+        risetemp = RiseSet(jd0UT, coor1, coor2, lon, lat, 1, -12.*DEG);
+        rise.nauticalTwilightMorning = Mod(risetemp.rise +zone, 24.);
+        rise.nauticalTwilightEvening = Mod(risetemp.set  +zone, 24.);
+
+        // astronomical twilight time in UTC.
+        risetemp = RiseSet(jd0UT, coor1, coor2, lon, lat, 1, -18.*DEG);
+        rise.astronomicalTwilightMorning = Mod(risetemp.rise +zone, 24.);
+        rise.astronomicalTwilightEvening = Mod(risetemp.set  +zone, 24.);
+  }
+  return( rise );
+}
+
+// Find local time of moonrise and moonset
+// JD is the Julian Date of 0h local time (midnight)
+// Accurate to about 5 minutes or better
+// recursive: 1 - calculate rise/set in UTC
+// recursive: 0 - find rise/set on the current local day (set could also be first)
+// returns '' for moonrise/set does not occur on selected day
+function MoonRise(JD, deltaT, lon, lat, zone, recursive)
+{
+  var timeinterval = 0.5;
+
+  var jd0UT = Math.floor(JD-0.5)+0.5;   // JD at 0 hours UT
+  var suncoor1 = SunPosition(jd0UT+ deltaT/24./3600.);
+  var coor1 = MoonPosition(suncoor1, jd0UT+ deltaT/24./3600.);
+
+  var suncoor2 = SunPosition(jd0UT +timeinterval + deltaT/24./3600.); // calculations for noon
+  // calculations for next day's midnight
+  var coor2 = MoonPosition(suncoor2, jd0UT +timeinterval + deltaT/24./3600.);
+
+  var risetemp = new Object();
+  var rise = new Object();
+
+  // rise/set time in UTC, time zone corrected later.
+  // Taking into account refraction, semi-diameter and parallax
+  rise = RiseSet(jd0UT, coor1, coor2, lon, lat, timeinterval);
+
+  if (!recursive) { // check and adjust to have rise/set time on local calendar day
+    if (zone>0) {
+      // recursive call to MoonRise returns events in UTC
+      riseprev = MoonRise(JD-1., deltaT, lon, lat, zone, 1);
+
+      // recursive call to MoonRise returns events in UTC
+      //risenext = MoonRise(JD+1, deltaT, lon, lat, zone, 1);
+        //alert("yesterday="+riseprev.transit+"  today="+rise.transit+" tomorrow="+risenext.transit);
+        //alert("yesterday="+riseprev.rise+"  today="+rise.rise+" tomorrow="+risenext.rise);
+        //alert("yesterday="+riseprev.set+"  today="+rise.set+" tomorrow="+risenext.set);
+
+      if (rise.transit >= 24.-zone || rise.transit < -zone) { // transit time is tomorrow local time
+        if (riseprev.transit < 24.-zone) rise.transit = ''; // there is no moontransit today
+        else rise.transit  = riseprev.transit;
+      }
+
+      if (rise.rise >= 24.-zone || rise.rise < -zone) { // transit time is tomorrow local time
+        if (riseprev.rise < 24.-zone) rise.rise = ''; // there is no moontransit today
+        else rise.rise  = riseprev.rise;
+      }
+
+      if (rise.set >= 24.-zone || rise.set < -zone) { // transit time is tomorrow local time
+        if (riseprev.set < 24.-zone) rise.set = ''; // there is no moontransit today
+        else rise.set  = riseprev.set;
+      }
+
+    }
+    else if (zone<0) {
+      // rise/set time was tomorrow local time -> calculate rise time for former UTC day
+      if (rise.rise<-zone || rise.set<-zone || rise.transit<-zone) {
+        risetemp = MoonRise(JD+1., deltaT, lon, lat, zone, 1);
+
+        if (rise.rise < -zone) {
+          if (risetemp.rise > -zone) rise.rise = ''; // there is no moonrise today
+          else rise.rise = risetemp.rise;
+        }
+
+        if (rise.transit < -zone)
+        {
+          if (risetemp.transit > -zone)  rise.transit = ''; // there is no moonset today
+          else rise.transit  = risetemp.transit;
+        }
+
+        if (rise.set < -zone)
+        {
+          if (risetemp.set > -zone)  rise.set = ''; // there is no moonset today
+          else rise.set  = risetemp.set;
+        }
+
+      }
+    }
+
+    if (rise.rise)    rise.rise = Mod(rise.rise+zone, 24.);    // correct for time zone, if time is valid
+    if (rise.transit) rise.transit  = Mod(rise.transit +zone, 24.); // correct for time zone, if time is valid
+    if (rise.set)     rise.set  = Mod(rise.set +zone, 24.);    // correct for time zone, if time is valid
+  }
+  return( rise );
+}
+
+function Compute(form)
+{
+
+  if (eval(form.Year.value)<=1900 || eval(form.Year.value)>=2100 ) {
+    alert("Bitte wählen Sie ein Jahr zwischen 1901 und 2099");
+    return;
+  }
+
+  JD0 = CalcJD( eval(form.Day.value), eval(form.Month.value), eval(form.Year.value) );
+  JD  = JD0
+       +( eval(form.Hour.value) -eval(form.Zone.value.replace(/,/,'.')) +eval(form.Minute.value)/60.
+       + eval(form.Second.value.replace(/,/,'.'))/3600.) /24.;
+  TDT = JD+eval(form.DeltaT.value.replace(/,/,'.'))/24./3600.;
+
+  lat      = eval(form.Lat.value.replace(/,/,'.'))*DEG; // geodetic latitude of observer on WGS84
+  lon      = eval(form.Lon.value.replace(/,/,'.'))*DEG; // latitude of observer
+  height   = 0 * 0.001; // altiude of observer in meters above WGS84 ellipsoid (and converted to kilometers)
+
+  var gmst = GMST(JD);
+  var lmst = GMST2LMST(gmst, lon);
+
+  observerCart = Observer2EquCart(lon, lat, height, gmst); // geocentric cartesian coordinates of observer
+
+  sunCoor  = SunPosition(TDT, lat, lmst*15.*DEG);   // Calculate data for the Sun at given time
+  moonCoor = MoonPosition(sunCoor, TDT, observerCart, lmst*15.*DEG);    // Calculate data for the Moon at given time
+
+  form.JD.value = round100000(JD);
+  form.GMST.value = HHMMSS(gmst);
+  form.LMST.value = HHMMSS(lmst);
+
+  if (eval(form.Minute.value)<10) form.Minute.value = "0"+eval(form.Minute.value);
+  if (eval(form.Month.value)<10) form.Month.value = "0"+eval(form.Month.value);
+
+  form.SunLon.value  = round1000(sunCoor.lon*RAD);
+  form.SunRA.value   = HHMM(sunCoor.ra*RAD/15);
+  form.SunDec.value  = round1000(sunCoor.dec*RAD);
+  form.SunAz.value   = round100(sunCoor.az*RAD);
+  form.SunAlt.value  = round10(sunCoor.alt*RAD+Refraction(sunCoor.alt));  // including refraction
+
+  form.SunSign.value = sunCoor.sign;
+  form.SunDiameter.value = round100(sunCoor.diameter*RAD*60.); // angular diameter in arc seconds
+  form.SunDistance.value = round10(sunCoor.distance);
+
+  // Calculate distance from the observer (on the surface of earth) to the center of the sun
+  sunCart      = EquPolar2Cart(sunCoor.ra, sunCoor.dec, sunCoor.distance);
+  form.SunDistanceObserver.value = round10( Math.sqrt( sqr(sunCart.x-observerCart.x) + sqr(sunCart.y-observerCart.y) + sqr(sunCart.z-observerCart.z) ));
+
+  // JD0: JD of 0h UTC time
+  sunRise = SunRise(JD0, eval(form.DeltaT.value.replace(/,/,'.')), lon, lat, eval(form.Zone.value.replace(/,/,'.')), 0);
+
+  form.SunTransit.value = HHMM(sunRise.transit);
+  form.SunRise.value    = HHMM(sunRise.rise);
+  form.SunSet.value     = HHMM(sunRise.set);
+
+  form.SunCivilTwilightMorning.value    = HHMM(sunRise.cicilTwilightMorning);
+  form.SunCivilTwilightEvening.value    = HHMM(sunRise.cicilTwilightEvening);
+  form.SunNauticalTwilightMorning.value    = HHMM(sunRise.nauticalTwilightMorning);
+  form.SunNauticalTwilightEvening.value    = HHMM(sunRise.nauticalTwilightEvening);
+  form.SunAstronomicalTwilightMorning.value    = HHMM(sunRise.astronomicalTwilightMorning);
+  form.SunAstronomicalTwilightEvening.value    = HHMM(sunRise.astronomicalTwilightEvening);
+
+  form.MoonLon.value = round1000(moonCoor.lon*RAD);
+  form.MoonLat.value = round1000(moonCoor.lat*RAD);
+  form.MoonRA.value  = HHMM(moonCoor.ra*RAD/15.);
+  form.MoonDec.value = round1000(moonCoor.dec*RAD);
+  form.MoonAz.value   = round100(moonCoor.az*RAD);
+  form.MoonAlt.value  = round10(moonCoor.alt*RAD+Refraction(moonCoor.alt));  // including refraction
+  form.MoonAge.value = round1000(moonCoor.moonAge*RAD);
+  form.MoonPhaseNumber.value = round1000(moonCoor.phase);
+  form.MoonPhase.value    = moonCoor.moonPhase;
+
+  form.MoonSign.value     = moonCoor.sign;
+  form.MoonDistance.value = round10(moonCoor.distance);
+  form.MoonDiameter.value = round100(moonCoor.diameter*RAD*60.); // angular diameter in arc seconds
+
+  // Calculate distance from the observer (on the surface of earth) to the center of the moon
+  moonCart      = EquPolar2Cart(moonCoor.raGeocentric, moonCoor.decGeocentric, moonCoor.distance);
+  form.MoonDistanceObserver.value = round10( Math.sqrt( sqr(moonCart.x-observerCart.x) + sqr(moonCart.y-observerCart.y) + sqr(moonCart.z-observerCart.z) ));
+
+  moonRise = MoonRise(JD0, eval(form.DeltaT.value.replace(/,/,'.')), lon, lat, eval(form.Zone.value.replace(/,/,'.')), 0);
+
+  form.MoonTransit.value = HHMM(moonRise.transit);
+  form.MoonRise.value    = HHMM(moonRise.rise);
+  form.MoonSet.value     = HHMM(moonRise.set);
+}
+
+
+function InitDate(form)
+{
+  var now=new Date();
+  form.Hour.value    = now.getHours();
+  form.Minute.value  = now.getMinutes();
+  if (form.Minute.value<10) form.Minute.value = "0"+form.Minute.value;
+  form.Second.value  = now.getSeconds();
+  if (form.Second.value<10) form.Second.value = "0"+form.Second.value;
+  form.Day.value     = now.getDate();
+  form.Month.value   = now.getMonth()+1;
+  if (form.Month.value<10) form.Month.value = "0"+form.Month.value;
+  if (now.getYear()<1900) form.Year.value = now.getYear()+1900; // MSIE returns 2004, but NS years since 1900
+  else form.Year.value    = now.getYear();
+  form.Zone.value    = -now.getTimezoneOffset()/60.;
+}
+
+function Init(form)
+{
+  InitDate(form);
+  form.DeltaT.value  = "65"; // deltaT - difference among 'earth center' versus 'observered' time (TDT-UT), in seconds
+
+  form.JD.value      = empty;
+
+  form.GMST.value    = empty;
+  form.LMST.value    = empty;
+
+  form.Lon.value     = "7.83";
+  form.Lat.value     = "48.02";
+
+  form.SunLon.value  = empty; // SunLat is assumed to be 0
+  form.SunRA.value   = empty;
+  form.SunDec.value  = empty;
+  form.SunAz.value   = empty;
+  form.SunAlt.value  = empty;
+  form.SunDistance.value = empty;
+  form.SunDistanceObserver.value = empty;
+  form.SunDiameter.value = empty;
+  form.SunSign.value = empty;
+  form.SunTransit.value = empty;
+  form.SunRise.value = empty;
+  form.SunSet.value  = empty;
+  form.SunCivilTwilightMorning.value = empty;
+  form.SunCivilTwilightEvening.value  = empty;
+  form.SunNauticalTwilightMorning.value = empty;
+  form.SunNauticalTwilightEvening.value  = empty;
+  form.SunAstronomicalTwilightMorning.value = empty;
+  form.SunAstronomicalTwilightEvening.value  = empty;
+
+  form.MoonLon.value = empty;
+  form.MoonLat.value = empty;
+  form.MoonRA.value  = empty;
+  form.MoonDec.value = empty;
+  form.MoonAz.value  = empty;
+  form.MoonAlt.value  = empty;
+  form.MoonDistance.value = empty;
+  form.MoonDistanceObserver.value = empty;
+  form.MoonDiameter.value = empty;
+  form.MoonPhase.value  = empty;
+  form.MoonAge.value    = empty;
+  form.MoonSign.value   = empty;
+  form.MoonTransit.value = empty;
+  form.MoonRise.value   = empty;
+  form.MoonSet.value    = empty;
+}
+
+function ViewSource() {
+  window.location = "view-source:"+window.location.href;
+}
+
+document.write("<P>JavaScript ist an, persönliche, orts- und zeitunabhängige Berechnungen können durchgeführt werden, </P>");
+document.write("<P>diese Daten können Sie ändern und berechnen lassen, ansonsten wird die Standardvorauswahl genommen. </P>");
+
+</SCRIPT>
+<NOSCRIPT>
+<P align=center>Ohne Javascript können Sie keine orts- und zeitunabhängige Berechnungen durchführen.</P>
+</NOSCRIPT>
+<!-- ---------------------- Ende des Scripts ------------------------- -->
+<FORM NAME="SunMoon">
+<TABLE WIDTH=50%>
+<center><h3>Detailierte Sonnen- und Monddaten</h3></center>
+<TR><TD align='center';>Negative Werte für die Ortsangabe sind möglich</TD></TR>
+<TR><TD align='center';>(z.B. -23.5° östliche Länge, -46.61° östliche Breite für Sao Paulo)</TD></TR>
+<TR><TD></TD></TR>
+<TR><TD>Geografische Länge eingeben: (z.B. 7.83 für Flugplatz Freiburg)</TD><TD> <INPUT TYPE="text"  NAME="Lon" SIZE=4> Grad Ost</TD></TR>
+<TR><TD>Geografische Breite eingeben: ( z.B. 48.02 für Flugplatz Freiburg)</TD><TD> <INPUT TYPE="text"  NAME="Lat" SIZE=4> Grad Nord</TD></TR>
+<TR><TD>Gewünschtes Datum eingeben:</TD><TD><INPUT TYPE="text" NAME="Day" SIZE=1>.<INPUT TYPE ="text" NAME="Month" SIZE=2>.<INPUT TYPE="text" NAME="Year" SIZE=2></TD></TR>
+<TR><TD>Gewünschte Zeit eingeben:</TD><TD><INPUT TYPE ="text" NAME="Hour" SIZE=2>:<INPUT TYPE="text" NAME="Minute" SIZE=1>:<INPUT TYPE="text" NAME="Second" SIZE=1></TD></TR>
+<TR><TD>DeltaT UTC (1 = Winterzeit | 2 = Sommerzeit)</TD><TD> <INPUT TYPE="text"  NAME="Zone" SIZE=1> Std.</TD></TR>
+<TR><TD></TD></TR>
+<TR><TD>deltaT in Sekunden eingeben: (optional)</TD><TD> <INPUT TYPE="text"  NAME="DeltaT" SIZE=1> sek</TD></TR>
+<TR><TD></TD></TR>
+<TR><TD colspan=2 align=center>
+<INPUT TYPE="button" VALUE="&raquo; MIT EINGEBENEN DATEN BERRECHNEN &laquo;" ONCLICK="Compute(this.form);">
+<INPUT TYPE="button" VALUE="&raquo; AKTUELLE ZEIT UND DATUM EINFÜGEN &laquo;" ONCLICK="InitDate(this.form); Compute(this.form);">
+</TD></TR>
+<TR><TD>Sonnenaufgang            </TD><TD> <INPUT TYPE="text"  NAME="SunRise" SIZE=15> Uhr</TD></TR>
+<TR><TD>Sonnenkulmination        </TD><TD> <INPUT TYPE="text"  NAME="SunTransit" SIZE=15> Uhr</TD></TR>
+<TR><TD>Sonnenuntergang          </TD><TD> <INPUT TYPE="text"  NAME="SunSet" SIZE=15> Uhr</TD></TR>
+<TR><TD>Azimut der Sonne         </TD><TD> <INPUT TYPE="text"  NAME="SunAz" SIZE=15> Grad</TD></TR>
+<TR><TD>Höhe der Sonne über Horizont</TD><TD> <INPUT TYPE="text"  NAME="SunAlt" SIZE=15> Grad</TD></TR>
+<TR><TD>Mondaufgang              </TD><TD> <INPUT TYPE="text"  NAME="MoonRise" SIZE=15> Uhr</TD></TR>
+<TR><TD>Mondkulmination          </TD><TD> <INPUT TYPE="text"  NAME="MoonTransit" SIZE=15> Uhr</TD></TR>
+<TR><TD>Monduntergang            </TD><TD> <INPUT TYPE="text"  NAME="MoonSet" SIZE=15> Uhr</TD></TR>
+<TR><TD>Azimut des Mondes        </TD><TD> <INPUT TYPE="text"  NAME="MoonAz" SIZE=15> Grad</TD></TR>
+<TR><TD>Höhe des Mondes über Horizont</TD><TD> <INPUT TYPE="text"  NAME="MoonAlt" SIZE=15> Grad</TD></TR>
+<TR><TD>Astronomische Morgendämmerung</TD><TD> <INPUT TYPE="text"  NAME="SunAstronomicalTwilightMorning" SIZE=15> Uhr</TD></TR>
+<TR><TD>Nautische Morgendämmerung</TD><TD> <INPUT TYPE="text"  NAME="SunNauticalTwilightMorning" SIZE=15> Uhr</TD></TR>
+<TR><TD>Bürgerliche Morgendämmerung</TD><TD> <INPUT TYPE="text"  NAME="SunCivilTwilightMorning" SIZE=15> Uhr</TD></TR>
+<TR><TD>Bürgerliche Abenddämmerung</TD><TD> <INPUT TYPE="text"  NAME="SunCivilTwilightEvening" SIZE=15> Uhr</TD></TR>
+<TR><TD>Nautische Abenddämmerung</TD><TD> <INPUT TYPE="text"  NAME="SunNauticalTwilightEvening" SIZE=15> Uhr</TD></TR>
+<TR><TD>Astronomische Abenddämmerung</TD><TD> <INPUT TYPE="text"  NAME="SunAstronomicalTwilightEvening" SIZE=15> Uhr</TD></TR>
+<TR><TD>Mondphase                </TD><TD> <INPUT TYPE="text"  NAME="MoonPhaseNumber" SIZE=15> </TD></TR>
+<TR><TD>Mondalter                </TD><TD> <INPUT TYPE="text"  NAME="MoonAge" SIZE=15> Grad</TD></TR>
+<TR><TD>Mondphase                </TD><TD> <INPUT TYPE="text"  NAME="MoonPhase" SIZE=17></TD></TR>
+<TR><TD>Mondzeichen              </TD><TD> <INPUT TYPE="text"  NAME="MoonSign" SIZE=15></TD></TR>
+<TR><TD>Entfernung der Sonne (vom Erdmittelpunkt)</TD><TD> <INPUT TYPE="text"  NAME="SunDistance" SIZE=15> km</TD></TR>
+<TR><TD>Entfernung der Sonne (von der Erdoberfläche)</TD><TD> <INPUT TYPE="text"  NAME="SunDistanceObserver" SIZE=15> km</TD></TR>
+<TR><TD>Eklipt. Länge der Sonne  </TD><TD> <INPUT TYPE="text"  NAME="SunLon" SIZE=15> Grad</TD></TR>
+<TR><TD>Rektaszension der Sonne  </TD><TD> <INPUT TYPE="text"  NAME="SunRA" SIZE=15> Uhr</TD></TR>
+<TR><TD>Deklination der Sonne    </TD><TD> <INPUT TYPE="text"  NAME="SunDec" SIZE=15> Grad</TD></TR>
+<TR><TD>Durchmesser der Sonne    </TD><TD> <INPUT TYPE="text"  NAME="SunDiameter" SIZE=15> '</TD></TR>
+<TR><TD>Tierkreiszeichen         </TD><TD> <INPUT TYPE="text"  NAME="SunSign" SIZE=15></TD></TR>
+<TR><TD>Entfernung des Mondes (Erdmittelpunkt)</TD><TD> <INPUT TYPE="text"  NAME="MoonDistance" SIZE=15> km</TD></TR>
+<TR><TD>Entfernung des Mondes (vom Beobachter)</TD><TD> <INPUT TYPE="text"  NAME="MoonDistanceObserver" SIZE=15> km</TD></TR>
+<TR><TD>Eklipt. Länge des Mondes </TD><TD> <INPUT TYPE="text"  NAME="MoonLon" SIZE=15> Grad</TD></TR>
+<TR><TD>Eklipt. Breite des Mondes</TD><TD> <INPUT TYPE="text"  NAME="MoonLat" SIZE=15> Grad</TD></TR>
+<TR><TD>Rektaszension des Mondes </TD><TD> <INPUT TYPE="text"  NAME="MoonRA" SIZE=15> Uhr</TD></TR>
+<TR><TD>Deklination des Mondes   </TD><TD> <INPUT TYPE="text"  NAME="MoonDec" SIZE=15> Grad</TD></TR>
+<TR><TD>Durchmesser des Mondes   </TD><TD> <INPUT TYPE="text"  NAME="MoonDiameter" SIZE=15> '</TD></TR>
+<TR><TD>Julianisches Datum       </TD><TD> <INPUT TYPE="text"  NAME="JD" SIZE=15> Tage</TD></TR>
+<TR><TD>Greenwich Sternzeit GMST </TD><TD> <INPUT TYPE="text"  NAME="GMST" SIZE=17> Uhr</TD></TR>
+<TR><TD>Lokale Sternzeit LMST    </TD><TD> <INPUT TYPE="text"  NAME="LMST" SIZE=17> Uhr</TD></TR>
+
+</TABLE>
+</FORM>
+<SCRIPT LANGUAGE="JavaScript">
+  Init(document.SunMoon);
+  Compute(document.SunMoon);
+</SCRIPT>
