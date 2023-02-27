@@ -1,20 +1,15 @@
 <html>
 <head>
 <title>Sonnenaufgang, Sonnenuntergang, Mondaufgang, Monduntergang, Mondphase, Vollmond, Neumond, Sonnenfinsternis, Axel Freiburg</title>
-<meta name="description" content="Axel Freiburg Mondphase Vollmond Mondaufgang Monduntergang Sonnenaufgang Sonnenuntergang Sonnenfinsternis Sonne Azimut Morgendämmerung Abenddämmerung Horizont">
+<meta name="description" content="Mondphase Vollmond Mondaufgang Monduntergang Sonnenaufgang Sonnenuntergang Sonnenfinsternis Sonne Azimut Morgendämmerung Abenddämmerung Horizont">
 <meta http-equiv="cache-control" content="no-cache" />
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="-1" />
-<meta http-equiv="refresh" content="86400; URL=mondphase_sonnenaufgang_axel_freiburg.html" />
+<meta http-equiv="refresh" content="86400; URL=mond.html" />
 <link rel="stylesheet" href="menu_style.css" type="text/css" />
 <body bgcolor="#000000">
 <ul class="menu red">
-<li><a href="axel_freiburg.php" target="_self">Startseite</a></li>
-<li><a href="kontakt_axel_freiburg.php" target="_self">Kontakt</a></li>
-<li><a href="axel_freiburg_wetter.php" target="_self">Wetter</a></li>
-<li class="current"><a href="mondphase_sonnenaufgang_axel_freiburg.html" target="_self">Sonnenaufgang Mondphase</a>
-<li><a href="/phpbb/index.php" target="_self">Forum</a></li>
-<li><a href="stromrechner_axel_freiburg.html" target="_self">Stromrechner</a></li>
+<li class="current"><a href="mondp.html" target="_self">Sonnenaufgang Mondphase</a>
 </ul>
 <script type="text/javascript">
 <!--
@@ -113,7 +108,7 @@
         if(Math.abs(g) > 1.5433 + u) JDE = 0; // keine SF
         if(Modus == 0 && ((g >= -.9972 && g <= .9972) || (Math.abs(g) >= .9972 && Math.abs(g) < .9972 + Math.abs(u)))) JDE = 0; // keine partielle Sf
         if(Modus > 0){
-           if((g < -.9972 || g > .9972) || (Math.abs(g) < .9972 && Math.abs(g) > .9972 + Math.abs(u))) JDE = 0; // keine ringf�rmige oder totale SF
+           if((g < -.9972 || g > .9972) || (Math.abs(g) < .9972 && Math.abs(g) > .9972 + Math.abs(u))) JDE = 0; // keine ringf�rmige oder totale SF
            if(u > .0047 || u >= .00464 * Math.sqrt(1 - g * g)) Ringtest = 1; // keine totale Sf
            if (Ringtest == 1 && Modus == 1) JDE = 0;
            if (Ringtest == 0 && Modus == 2) JDE = 0;
@@ -644,7 +639,7 @@
 <tr>
 </tr>
 </table>
-<h1 align="center">Freiburg Mondphase Sonnenaufgang Sonnenuntergang</h1>
+<h1 align="center">Mondphase Sonnenaufgang Sonnenuntergang</h1>
 <form name="mond" action="/">
 <table summary="Formrahmen" align="center" border="1">
 <tr><td>
@@ -1522,18 +1517,6 @@ document.write("<P>diese Daten können Sie ändern und berechnen lassen, ansonst
   Init(document.SunMoon);
   Compute(document.SunMoon);
 </SCRIPT>
-<script type="application/ld+json">
-{
-  "@context": "http://schema.org/",
-  "@type": "Person",
-  "name": "Axel Freiburg",
-  "jobTitle": "Axel Freiburg",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Freiburg",
-    "addressRegion": "Baden-Württemberg"
-  }
-}
-</script>
+
 
 
